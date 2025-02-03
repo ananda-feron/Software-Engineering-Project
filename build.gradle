@@ -4,7 +4,7 @@ plugins {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-eclipse.project.name = 'Funny Team'
+eclipse.project.name = 'SEProjectFramework'
 
 sourceSets {
 	main {
