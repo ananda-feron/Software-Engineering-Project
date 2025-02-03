@@ -4,7 +4,7 @@ plugins {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-eclipse.project.name = 'PowerRangers'
+eclipse.project.name = 'Funny Team'
 
 sourceSets {
 	main {
