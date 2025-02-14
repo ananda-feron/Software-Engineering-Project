@@ -1,4 +1,5 @@
 package usercomputeapi;
+import project.annotations.NetworkAPI;
 
 @NetworkAPI
 public interface ComputeEngine {
