@@ -1,7 +1,10 @@
 package computetaskhandlerapi;
 
+import project.annotations.ConceptualAPIPrototype;
+
 public class PrototypeTaskHandler {
 
+	@ConceptualAPIPrototype
     public void prototype(InputStream inputStream) {
 
         //receive task from compiler
