@@ -6,3 +6,4 @@
  */
 
 rootProject.name = "gradle-8.6"
+include("src")
