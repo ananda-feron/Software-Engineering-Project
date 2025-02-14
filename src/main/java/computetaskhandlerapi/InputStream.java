@@ -2,7 +2,7 @@ package computetaskhandlerapi;
 
 public interface InputStream {
 
-    ReceiveTaskResponse receiveTask(receiveTaskRequest receiveTaskRequest);
+    ReceiveTaskResponse receiveTask(ReceiveTaskRequest receiveTaskRequest);
 
     SendTaskResponse sendTask(SendTaskRequest sendTaskRequest);
 }

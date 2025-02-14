@@ -1,4 +1,4 @@
 package computetaskhandlerapi;
 
-public class receiveTaskRequest {
+public class ReceiveTaskRequest {
 }
