@@ -1,5 +1,7 @@
 package usercomputeapi;
+import project.annotations.NetworkAPI;
 
+@NetworkAPI
 public interface ComputeEngine {
 
     InputSourceResponse requestInput(InputSourceRequest inputSourceRequest);
