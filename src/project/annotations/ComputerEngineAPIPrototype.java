@@ -1,6 +1,6 @@
 package project.annotations;
 
-public class ComputerEngineAPIPrototype implements ComputerEngineAPI {
+public class ComputerEngineAPIPrototype {
 	
     @NetworkAPIPrototype
     public void prototypeMethod(ComputerEngineAPI api) {
