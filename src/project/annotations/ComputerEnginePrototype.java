@@ -1,6 +1,6 @@
 package project.annotations;
 
-public class ComputerEnginePrototype implements ComputerEngine {
+public class ComputerEngineAPIPrototype implements ComputerEngineAPI {
 	
     private String source;
     private String delimiter = ","; // Default delimiter
