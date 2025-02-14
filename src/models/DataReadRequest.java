@@ -1,16 +1,16 @@
 package models;
 
-// stores retrieved data from the storage system
-public class DataReadResponse {
+// requests data to read from storage
+public class DataReadRequest {
     
-    private String data;
+    private String sourcePath;
 
-    public DataReadResponse(String data) {
-        this.data = data;
+    public DataReadRequest(String sourcePath) {
+        this.sourcePath = sourcePath;
     }
 
-    public String getData() { 
-        return data; 
+    public String getSourcePath() { 
+        return sourcePath; 
     }
 
 }
