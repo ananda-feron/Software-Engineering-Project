@@ -29,7 +29,7 @@ public class ComputerEngineAPIPrototype implements ComputerEngineAPI {
     @NetworkAPIPrototype
     public void setDestination(String destination) {
         // Logic to set destination (file, networked drive, etc.)
-    	this.destnation = destination;
+    	this.destination = destination;
     }
 
     //get the source from user
