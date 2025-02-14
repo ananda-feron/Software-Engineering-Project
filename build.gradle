@@ -4,7 +4,7 @@ plugins {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-eclipse.project.name = 'Cool Coders'
+eclipse.project.name = 'Power Rangers'
 
 sourceSets {
 	main {
@@ -33,6 +33,7 @@ test {
     
       filter {
         excludeTestsMatching "project.annotations.Assignment*"
+	setFailOnNoMatchingTests(false)
       }
 }
 
