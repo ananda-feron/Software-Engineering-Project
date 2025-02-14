@@ -1,5 +1,6 @@
 package usercomputeapi;
 
+@NetworkAPI
 public interface ComputeEngine {
 
     InputSourceResponse requestInput(InputSourceRequest inputSourceRequest);

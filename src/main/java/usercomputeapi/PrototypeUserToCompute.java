@@ -1,6 +1,7 @@
 package usercomputeapi;
 
 public class PrototypeUserToCompute {
+	@NetworkAPIPrototype
     public void prototype(ComputeEngine computeEngine) {
 
         //request input source
