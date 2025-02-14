@@ -1,5 +1,8 @@
 package computetaskhandlerapi;
 
+import project.annotations.ConceptualAPI;
+
+@ConceptualAPI
 public interface InputStream {
 
     ReceiveTaskResponse receiveTask(ReceiveTaskRequest receiveTaskRequest);
