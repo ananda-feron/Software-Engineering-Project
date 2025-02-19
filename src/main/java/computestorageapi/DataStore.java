@@ -10,3 +10,8 @@ public interface DataStore {
 
     WriteResponse writeToOutput(OutputDestinationRequest outputDestinationRequest);
 }
+ @Override
+    public WriteResponse writeToOutput(OutputDestinationRequest outputDestinationRequest) {
+        storage.put(outputDestinationRequest.getKey(), outputDestinationRequest.getData());
+        return new WriteResponse(true);
+    }
