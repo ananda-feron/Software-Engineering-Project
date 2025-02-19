@@ -1,9 +1,6 @@
-package emptyimplementations;
-
-import usercomputeapi.*;
+package usercomputeapi;
 
 public class ComputeAPIImplementation implements ComputeEngine {
-
 
     @Override
     public InputSourceResponse requestInput(InputSourceRequest inputSourceRequest) {
