@@ -1,8 +1,7 @@
 package usercomputeapi;
-import project.annotations.NetworkAPIPrototype;
 
-public class PrototypeUserToCompute {
-	@NetworkAPIPrototype
+public class NetworkAPIPrototype {
+	@project.annotations.NetworkAPIPrototype
     public void prototype(ComputeEngine computeEngine) {
 
         //request input source

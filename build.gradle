@@ -31,10 +31,10 @@ repositories {
 test {
     useJUnitPlatform()
     
-      filter {
-        excludeTestsMatching "project.annotations.Assignment*"
-	setFailOnNoMatchingTests(false)
-      }
+//      filter {
+//        excludeTestsMatching "project.annotations.Assignment*"
+//	setFailOnNoMatchingTests(false)
+//      }
 }
 
 def grpcVersion = '1.59.1'
