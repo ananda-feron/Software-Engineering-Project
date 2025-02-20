@@ -1,4 +1,4 @@
-package smoke.TestNetworkAPI;
+package smoke.testnetworkapi;
 
 import conceptualapi.InputStream;
 
