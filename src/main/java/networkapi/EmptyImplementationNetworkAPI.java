@@ -1,6 +1,6 @@
-package usercomputeapi;
+package networkapi;
 
-import computetaskhandlerapi.InputStream;
+import conceptualapi.InputStream;
 
 public class EmptyImplementationNetworkAPI implements ComputeEngine {
 

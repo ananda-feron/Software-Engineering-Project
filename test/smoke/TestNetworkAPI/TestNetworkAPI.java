@@ -1,8 +1,8 @@
-package smoke;
+package smoke.TestNetworkAPI;
 
-import computetaskhandlerapi.InputStream;
+import conceptualapi.InputStream;
 import org.junit.jupiter.api.Test;
-import usercomputeapi.*;
+import networkapi.*;
 
 import static org.mockito.Mockito.*;
 
