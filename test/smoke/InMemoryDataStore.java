@@ -17,15 +17,13 @@ public class InMemoryDataStore implements DataStore {
         this.outputDestinationResponse = outputDestinationResponse;
     }
 
-
-    @Override
     public ReadResponse readFromInput(ReadInputRequest inputSourceRequest) {
         List<Integer> inputData = inputSourceResponse.getInputSource().getData();
         return () -> inputData; //lambda expression
     }
 
-    @Override
     public WriteResponse writeToOutput(SendOutputRequest sendOutputRequest) {
+        //TODO 
         return null;
     }
 
