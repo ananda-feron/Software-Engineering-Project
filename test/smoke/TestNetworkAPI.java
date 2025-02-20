@@ -1,10 +1,26 @@
 package smoke;
 
 import computetaskhandlerapi.InputStream;
-import org.junit.jupiter.api.Test;
-import usercomputeapi.*;
 
-import static org.mockito.Mockito.*;
+import usercomputeapi.ComputeEngine;
+import usercomputeapi.EmptyImplementationNetworkAPI;
+import usercomputeapi.InputSourceRequest;
+import usercomputeapi.InputSourceResponse;
+import usercomputeapi.OutputDestinationResponse;
+import usercomputeapi.OutputDestinationRequest;
+import usercomputeapi.DelimiterResponse;
+import usercomputeapi.DelimiterRequest;
+import usercomputeapi.SendDataResponse;
+import usercomputeapi.InputSource;
+import usercomputeapi.OutputDestination;
+
+import org.junit.jupiter.api.Test;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.any;
+
 
 public class TestNetworkAPI {
 
