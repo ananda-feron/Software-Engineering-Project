@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface WriteResponse {
 
-    List<String> getOutput();
+    List<String> getMessage();
 
 }
