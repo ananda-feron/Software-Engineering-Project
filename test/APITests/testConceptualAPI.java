@@ -1,7 +1,12 @@
 package APITests;
 
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+
+import computetaskhandlerapi.ReceiveTaskRequest;
+import computetaskhandlerapi.ReceiveTaskResponse;
+import computetaskhandlerapi.SendTaskRequest;
+import computetaskhandlerapi.SendTaskResponse;
 
 import org.junit.jupiter.api.Test;
 
@@ -9,11 +14,11 @@ public class testConceptualAPI {
 
     @Test
     public void testReceiveTaskResponse(){
-        InputStream mockInputStream = mockito.mock(InputStream.class);
+        InputStream mockInputStream = Mockito.mock(InputStream.class);
 
-        when(mockInputStream.receiveTask(any(ReceiveTaskRequest.class))).thenReturn(new ReceiveTaskResponse())
+        when(mockInputStream.receiveTask(any(ReceiveTaskRequest.class))).thenReturn(new ReceiveTaskResponse());
 
-        PrototypeTaskHandler testComponent = newPrototypeTaskHandler(mockInputStream);
+        PrototypeTaskHandler testComponent = new PrototypeTaskHandler(mockInputStream);
 
         verify(mockInputStream).receiveTask(any(ReceiveTaskRequest.class));
     }
