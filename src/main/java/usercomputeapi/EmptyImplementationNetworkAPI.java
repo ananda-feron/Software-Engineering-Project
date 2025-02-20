@@ -11,7 +11,7 @@ public class EmptyImplementationNetworkAPI implements ComputeEngine {
     public EmptyImplementationNetworkAPI(InputStream inputStream) {
         this.inputStream = inputStream;
     }
-
+  
     @Override
     public InputSourceResponse requestInput(InputSourceRequest inputSourceRequest) {
         return null;
