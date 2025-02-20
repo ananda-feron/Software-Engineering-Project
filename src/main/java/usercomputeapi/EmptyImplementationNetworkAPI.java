@@ -1,6 +1,16 @@
 package usercomputeapi;
 
+import computetaskhandlerapi.InputStream;
+
 public class EmptyImplementationNetworkAPI implements ComputeEngine {
+
+    //fields
+    private InputStream inputStream;
+
+    //constructor
+    public EmptyImplementationNetworkAPI(InputStream inputStream) {
+        this.inputStream = inputStream;
+    }
 
     @Override
     public InputSourceResponse requestInput(InputSourceRequest inputSourceRequest) {
