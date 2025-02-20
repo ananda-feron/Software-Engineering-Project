@@ -1,18 +1,18 @@
-package smoke;
+package smoke.testnetworkapi;
 
-import computetaskhandlerapi.InputStream;
+import conceptualapi.InputStream;
 
-import usercomputeapi.ComputeEngine;
-import usercomputeapi.EmptyImplementationNetworkAPI;
-import usercomputeapi.InputSourceRequest;
-import usercomputeapi.InputSourceResponse;
-import usercomputeapi.OutputDestinationResponse;
-import usercomputeapi.OutputDestinationRequest;
-import usercomputeapi.DelimiterResponse;
-import usercomputeapi.DelimiterRequest;
-import usercomputeapi.SendDataResponse;
-import usercomputeapi.InputSource;
-import usercomputeapi.OutputDestination;
+import networkapi.ComputeEngine;
+import networkapi.EmptyImplementationNetworkAPI;
+import networkapi.InputSourceRequest;
+import networkapi.InputSourceResponse;
+import networkapi.OutputDestinationResponse;
+import networkapi.OutputDestinationRequest;
+import networkapi.DelimiterResponse;
+import networkapi.DelimiterRequest;
+import networkapi.SendDataResponse;
+import networkapi.InputSource;
+import networkapi.OutputDestination;
 
 import org.junit.jupiter.api.Test;
 

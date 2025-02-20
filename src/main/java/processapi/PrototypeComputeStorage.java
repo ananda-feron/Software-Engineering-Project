@@ -1,6 +1,6 @@
-package computestorageapi;
+package processapi;
 
-import usercomputeapi.OutputDestinationRequest;
+import networkapi.OutputDestinationRequest;
 
 import project.annotations.ProcessAPIPrototype;
 
