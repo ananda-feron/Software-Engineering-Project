@@ -1,7 +1,5 @@
 package processapi;
 
-import networkapi.OutputDestinationRequest;
-
 import project.annotations.ProcessAPIPrototype;
 
 public class PrototypeComputeStorage {
@@ -10,10 +8,10 @@ public class PrototypeComputeStorage {
     public void prototype(DataStore dataStore) {
 
         //read from compute engine output
-        ReadResponse readResponse = dataStore.readFromInput(new ReadInputRequest());
+        ReadInputResponse readResponse = dataStore.readFromInput(new ReadInputRequest());
 
         //write to user specified output
-        WriteResponse writeResponse = dataStore.writeToOutput(new OutputDestinationRequest());
+        WriteOutputResponse writeResponse = dataStore.writeToOutput(new WriteOutputRequest());
 
     }
 
