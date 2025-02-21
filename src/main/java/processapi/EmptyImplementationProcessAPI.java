@@ -12,7 +12,7 @@ public class EmptyImplementationProcessAPI implements DataStore{
     }
 
     @Override
-    public ReadResponse readFromInput(ReadInputRequest InputSourceRequest){
+    public ReadResponse readFromInput(ReadInputRequest inputSourceRequest){
         return null;
     }
 
