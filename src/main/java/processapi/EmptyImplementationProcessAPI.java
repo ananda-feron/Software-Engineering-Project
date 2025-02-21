@@ -1,23 +1,24 @@
 package processapi;
 
+import conceptualapi.InputStream;
 import networkapi.OutputDestinationRequest;
-import project.annotations.ConceptualAPI;
+
 
 public class EmptyImplementationProcessAPI implements DataStore{
 
-    private ConceptualAPI conceptualAPI;
+    private InputStream inputStream;
 
-    private EmptyImplementationProcessAPI(ConceptualAPI conceptualAPI){
-        this.conceptualAPI = conceptualAPI;
+    private EmptyImplementationProcessAPI(InputStream inputStream){
+        this.inputStream = inputStream;
     }
 
     @Override
-    public ReadResponse readFromInput(ReadInputRequest inputSourceRequest){
+    public ReadInputResponse readFromInput(ReadInputRequest inputSourceRequest){
         return null;
     }
 
     @Override
-    public WriteResponse writeToOutput(OutputDestinationRequest outputDestinationRequest){
+    public WriteOutputResponse writeToOutput(WriteOutputRequest sendOutputRequest) {
         return null;
     }
 
