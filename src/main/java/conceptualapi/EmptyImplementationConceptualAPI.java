@@ -1,6 +1,10 @@
-package computetaskhandlerapi;
+package conceptualapi;
+
+import networkapi.ComputeEngine;
 
 public class EmptyImplementationConceptualAPI implements InputStream {
+
+    private ComputeEngine computeEngine;
 
     @Override
      public ReceiveTaskResponse receiveTask(ReceiveTaskRequest receiveTaskRequest){
