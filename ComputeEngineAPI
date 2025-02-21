@@ -1,0 +1,12 @@
+// For Computer engineAPI
+public class ComputeEngineAPI {
+    private DataStoreAPI dataStore;
+
+    public ComputeEngineAPI(DataStoreAPI dataStore) {
+        this.dataStore = dataStore;
+    }
+
+    public String compute(int number) {
+        return "";
+    }
+}
