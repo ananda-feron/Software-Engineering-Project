@@ -1,9 +1,12 @@
-package computestorageapi;
+package processapi;
 
-import usercomputeapi.OutputDestinationRequest;
+import networkapi.OutputDestinationRequest;
+
+import project.annotations.ProcessAPIPrototype;
 
 public class PrototypeComputeStorage {
 
+	@ProcessAPIPrototype
     public void prototype(DataStore dataStore) {
 
         //read from compute engine output
