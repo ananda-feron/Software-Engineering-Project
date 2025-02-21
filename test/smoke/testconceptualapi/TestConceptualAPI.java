@@ -1,6 +1,6 @@
 package smoke.testconceptualapi;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.*; 
 import org.junit.jupiter.api.Test;
 import conceptualapi.InputStream;
 import conceptualapi.ReceiveTaskRequest;
