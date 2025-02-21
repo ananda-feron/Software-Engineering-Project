@@ -1,13 +1,13 @@
-package APITests;
+package smoke.testconceptualapi;
 
 import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
-import computetaskhandlerapi.InputStream;
-import computetaskhandlerapi.ReceiveTaskRequest;
-import computetaskhandlerapi.ReceiveTaskResponse;
-import computetaskhandlerapi.SendTaskRequest;
-import computetaskhandlerapi.SendTaskResponse;
-import computetaskhandlerapi.PrototypeTaskHandler;
+import conceptualapi.InputStream;
+import conceptualapi.ReceiveTaskRequest;
+import conceptualapi.ReceiveTaskResponse;
+import conceptualapi.SendTaskRequest;
+import conceptualapi.SendTaskResponse;
+import conceptualapi.PrototypeTaskHandler;
 
 public class TestConceptualAPI {
 
