@@ -1,4 +1,4 @@
-package computestorageapi;
+package processapi;
 
 public interface WriteResponse {
 
