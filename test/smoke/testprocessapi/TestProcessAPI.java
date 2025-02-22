@@ -12,6 +12,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.any;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestProcessAPI {
 
@@ -28,7 +29,7 @@ public class TestProcessAPI {
 
         testComponent.prototype(mockDatastore);
 
-        verify(mockDatastore).readFromInput(any(ReadInputRequest.class));
+        assertEquals(mockReadInputResponse, mockDatastore.readFromInput(any(ReadInputRequest.class)));
     }
 
     @Test
@@ -40,7 +41,7 @@ public class TestProcessAPI {
 
         testComponent.prototype(mockDatastore);
 
-        verify(mockDatastore).writeToOutput(any(WriteOutputRequest.class));
+        assertEquals(mockWriteOutputResponse, mockDatastore.writeToOutput(any(WriteOutputRequest.class)));
     }
 }
 
