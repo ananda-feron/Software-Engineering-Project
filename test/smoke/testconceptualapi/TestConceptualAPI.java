@@ -11,9 +11,10 @@ import conceptualapi.PrototypeTaskHandler;
 
 public class TestConceptualAPI {
 
+    InputStream mockInputStream = mock(InputStream.class);
+
     @Test
     public void testPrototypeReceiveTask() {
-        InputStream mockInputStream = mock(InputStream.class);
 
         ReceiveTaskResponse mockReceiveTaskResponse = mock(ReceiveTaskResponse.class);
 
@@ -28,7 +29,6 @@ public class TestConceptualAPI {
 
     @Test
     public void testPrototypeSendTask() {
-        InputStream mockInputStream = mock(InputStream.class);
 
         SendTaskResponse mockSendTaskResponse = mock(SendTaskResponse.class);
 
