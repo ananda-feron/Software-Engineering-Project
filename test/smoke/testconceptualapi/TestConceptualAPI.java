@@ -16,6 +16,7 @@ import static org.mockito.Mockito.any;
 public class TestConceptualAPI {
 
     InputStream mockInputStream = mock(InputStream.class);
+    PrototypeTaskHandler testComponent = new PrototypeTaskHandler();
 
     @Test
     public void testPrototypeReceiveTask() {
@@ -23,8 +24,6 @@ public class TestConceptualAPI {
         ReceiveTaskResponse mockReceiveTaskResponse = mock(ReceiveTaskResponse.class);
 
         when(mockInputStream.receiveTask(any(ReceiveTaskRequest.class))).thenReturn(mockReceiveTaskResponse);
-
-        PrototypeTaskHandler testComponent = new PrototypeTaskHandler();
 
         testComponent.prototype(mockInputStream);
 
@@ -37,8 +36,6 @@ public class TestConceptualAPI {
         SendTaskResponse mockSendTaskResponse = mock(SendTaskResponse.class);
 
         when(mockInputStream.sendTask(any(SendTaskRequest.class))).thenReturn(mockSendTaskResponse);
-
-        PrototypeTaskHandler testComponent = new PrototypeTaskHandler();
 
         testComponent.prototype(mockInputStream);
 
