@@ -12,6 +12,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.any;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestConceptualAPI {
 
@@ -27,7 +28,7 @@ public class TestConceptualAPI {
 
         testComponent.prototype(mockInputStream);
 
-        verify(mockInputStream).receiveTask(any(ReceiveTaskRequest.class));
+        assertEquals(mockReceiveTaskResponse, mockInputStream.receiveTask(any(ReceiveTaskRequest.class)));
     }
 
     @Test
@@ -39,6 +40,6 @@ public class TestConceptualAPI {
 
         testComponent.prototype(mockInputStream);
 
-        verify(mockInputStream).sendTask(any(SendTaskRequest.class));
+        assertEquals(mockSendTaskResponse, mockInputStream.sendTask(any(SendTaskRequest.class)));
     }
 }
