@@ -1,6 +1,5 @@
 package smoke.testconceptualapi;
 
-import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import conceptualapi.InputStream;
 import conceptualapi.ReceiveTaskRequest;
@@ -8,6 +7,11 @@ import conceptualapi.ReceiveTaskResponse;
 import conceptualapi.SendTaskRequest;
 import conceptualapi.SendTaskResponse;
 import conceptualapi.PrototypeTaskHandler;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.any;
 
 public class TestConceptualAPI {
 
