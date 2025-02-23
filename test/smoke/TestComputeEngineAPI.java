@@ -16,6 +16,7 @@ public class TestComputeEngineAPI {
         ComputeEngineAPI computeEngineAPI = new ComputeEngineImpl(mockDataStore);
 
         //arrange
+        //n.a.
 
         //act
         String result = computeEngineAPI.compute(12);
@@ -23,10 +24,6 @@ public class TestComputeEngineAPI {
         //assert
         assertEquals("9", result);
         //fails because ComputeEngine.compute returns null.
-
-        //verify
-        //TODO: verify methods were called
-
 
     }
 }

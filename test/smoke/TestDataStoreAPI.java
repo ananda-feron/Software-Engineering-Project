@@ -17,6 +17,9 @@ public class TestDataStoreAPI {
         InputConfig inputConfig = mock(InputConfig.class);
         OutputConfig outputConfig = mock(OutputConfig.class);
 
+        //arrange
+        //n.a.
+
         //act
         DataStoreReadResult dataStoreReadResult = dataStore.read(inputConfig);
         WriteResult writeResult = dataStore.appendSingleResult(outputConfig, "9", ',');
@@ -25,10 +28,8 @@ public class TestDataStoreAPI {
         assertTrue(dataStoreReadResult.getStatus() == DataStoreReadResult.Status.SUCCESS);
         assertTrue(writeResult.getStatus() == WriteResult.WriteResultStatus.SUCCESS);
 
-        //TODO: add assertEquals for further verification
+        //TODO: add assertEquals for further verification?
 
-        //verify
-        //TODO: verify methods were called
 
     }
 }

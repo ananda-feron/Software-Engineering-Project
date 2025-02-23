@@ -19,6 +19,8 @@ public class TestComputationCoordinatorAPI {
         ComputeRequest computeRequest = new ComputeRequest(inputConfig, outputConfig, ',');
 
         //arrange
+        //n.a.
+
 
         //act
         ComputeResult computeResult = computationCoordinator.compute(computeRequest);
@@ -27,8 +29,6 @@ public class TestComputationCoordinatorAPI {
         assertTrue(computeResult.getStatus().isSuccess());
         //fails because ComputationCoordinator.compute() returns null right now. this is what we want.
 
-        //verify
-        //TODO: verify methods were called
 
     }
 }
