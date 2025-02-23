@@ -1,7 +1,6 @@
 package apis;
 
-public class DataStoreImpl implements DataStoreAPI
-{
+public class DataStoreImpl implements DataStoreAPI {
     @Override
     public DataStoreReadResult read(InputConfig input) {
         return null;
