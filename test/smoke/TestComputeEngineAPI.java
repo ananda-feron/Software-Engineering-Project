@@ -1,6 +1,7 @@
 package smoke;
 
 import apis.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -19,6 +20,6 @@ public class TestComputeEngineAPI {
         String result = computeEngineAPI.compute(12);
 
         //assert
-        assertEquals(result, "9");
+        Assertions.assertEquals("9", result);
     }
 }

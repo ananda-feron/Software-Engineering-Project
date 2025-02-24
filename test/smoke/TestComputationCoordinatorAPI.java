@@ -1,5 +1,6 @@
 package smoke;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import apis.*;
 
@@ -47,7 +48,7 @@ public class TestComputationCoordinatorAPI {
         ComputeResult computeResult = computationCoordinator.compute(computeRequest);
 
         //assert
-        assertTrue(computeResult.getStatus().isSuccess());
+        Assertions.assertTrue(computeResult.getStatus().isSuccess());
         //fails because ComputationCoordinator.compute() returns null right now. this is what we want.
 
         //TODO: remove hardcoded values?

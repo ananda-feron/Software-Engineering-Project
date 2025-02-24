@@ -16,20 +16,18 @@ public class ComputeEngineImpl implements ComputeEngineAPI {
 
         (Maybe we need an exception?)
         */
-
-        StringBuilder builder = new StringBuilder();
+        
+        Integer steps = 0;
 
         while(value != 1) {
-            builder.append(value).append(" -> ");
             if(value % 2 == 0) {
                 value = value / 2;
             } else {
                 value = 3 * value + 1;
             }
+            steps++;
         }
 
-        builder.append("1");
-
-        return builder.toString();
+        return steps.toString();
     }
 }
