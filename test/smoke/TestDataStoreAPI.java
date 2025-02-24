@@ -1,11 +1,11 @@
 package smoke;
 
 import apis.*;
-
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
+
 
 public class TestDataStoreAPI {
 
@@ -16,9 +16,6 @@ public class TestDataStoreAPI {
 
         InputConfig inputConfig = mock(InputConfig.class);
         OutputConfig outputConfig = mock(OutputConfig.class);
-
-        //arrange
-        //n.a.
 
         //act
         DataStoreReadResult dataStoreReadResult = dataStore.read(inputConfig);

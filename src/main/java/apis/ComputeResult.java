@@ -2,7 +2,6 @@ package apis;
 
 public interface ComputeResult {
 
-    //constructor
     public ComputeResult SUCCESS = new ComputeResult() {
 
         public ComputeResultStatus getStatus() {

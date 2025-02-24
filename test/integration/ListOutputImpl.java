@@ -12,9 +12,13 @@ public class ListOutputImpl implements OutputConfig {
         this.output = output;
     }
 
+    public void writeOutput(String newData) {
+        output.add(newData);
+    }
 
-    public void writeOutput(List<String> outputData) {
-
+    @Override
+    public List<String> getOutput() {
+        return output;
     }
 
 }

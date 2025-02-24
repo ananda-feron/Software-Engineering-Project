@@ -6,13 +6,14 @@ import java.util.List;
 
 public class ListInputImpl implements InputConfig {
 
-    private final List<Integer> input;
+    private final List<Integer> inputData;
 
-    public ListInputImpl(List<Integer> input) {
-        this.input = input;
+    public ListInputImpl(List<Integer> inputData) {
+        this.inputData = inputData;
     }
 
+    @Override
     public List<Integer> getInputData() {
-        return input;
+        return null;
     }
 }

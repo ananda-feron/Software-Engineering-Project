@@ -3,31 +3,54 @@ package smoke;
 import org.junit.jupiter.api.Test;
 import apis.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyIterable;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class TestComputationCoordinatorAPI {
 
     @Test
     public void testComputationCoordinatorAPI() {
 
+        //mock api dependencies
         ComputeEngineAPI mockComputeEngine = mock(ComputeEngineAPI.class);
-//        ComputationCoordinatorAPI computationCoordinator = new ComputationCoordinatorImpl(mockComputeEngine);
+        DataStoreAPI mockDataStore = mock(DataStoreAPI.class);
 
+        //initialize computationCoordinator
+        ComputationCoordinatorAPI computationCoordinator = new ComputationCoordinatorImpl(mockComputeEngine, mockDataStore);
+
+        //extra mocks
         InputConfig inputConfig = mock(InputConfig.class);
         OutputConfig outputConfig = mock(OutputConfig.class);
+        DataStoreReadResult mockDataStoreReadResult = mock(DataStoreReadResult.class);
+        WriteResult mockWriteResult = mock(WriteResult.class);
+
+        //new computeRequest
         ComputeRequest computeRequest = new ComputeRequest(inputConfig, outputConfig, ',');
 
-        //arrange
-        //n.a.
+        ArrayList<Integer> integers = new ArrayList<>(List.of(1,2,3));
 
+        //arrange
+        when(mockDataStore.read(inputConfig)).thenReturn(mockDataStoreReadResult);
+        when(mockDataStoreReadResult.getStatus()).thenReturn(DataStoreReadResult.Status.SUCCESS);
+        when(mockDataStoreReadResult.getResults()).thenReturn(integers);
+        when(mockComputeEngine.compute(any(Integer.class))).thenReturn("test");
+        when(mockDataStore.appendSingleResult(outputConfig, "test", computeRequest.getDelimiter())).thenReturn(mockWriteResult);
+        when(mockWriteResult.getStatus()).thenReturn(WriteResult.WriteResultStatus.SUCCESS);
 
         //act
-//        ComputeResult computeResult = computationCoordinator.compute(computeRequest);
+        ComputeResult computeResult = computationCoordinator.compute(computeRequest);
 
         //assert
-//        assertTrue(computeResult.getStatus().isSuccess());
+        assertTrue(computeResult.getStatus().isSuccess());
         //fails because ComputationCoordinator.compute() returns null right now. this is what we want.
+
+        //TODO: remove hardcoded values?
 
 
     }

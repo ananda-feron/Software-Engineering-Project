@@ -3,25 +3,28 @@ package integration;
 import apis.*;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class ComputeEngineIntegrationTest {
 
     @Test
     public void computeEngineIntegrationTest() {
 
-        DataStoreAPI dataStore = new DataStoreImpl();
-        ComputeEngineAPI computeEngine = new ComputeEngineImpl(dataStore);
-        InputConfig inputConfig = new ListInputImpl(List.of(1,10,25));
-        OutputConfig outputConfig = new ListOutputImpl(List.of(""));
+        ComputeEngineAPI computeEngineAPI = new ComputeEngineImpl();
+        DataStoreAPI dataStoreAPI = new InMemoryDataStoreImpl();
+        ComputationCoordinatorAPI computationCoordinator = new ComputationCoordinatorImpl(computeEngineAPI, dataStoreAPI);
 
-        ComputeRequest request = new ComputeRequest(inputConfig, outputConfig);
+        InputConfig input = new ListInputImpl(new ArrayList<Integer>(List.of(1,10,25)));
+        OutputConfig output = new ListOutputImpl(new ArrayList<String>());
 
-        //some part of the computeEngineAPI will take a ComputeRequest as a parameter, and
-        // will send to the datastore.
+        ComputeRequest computeRequest = new ComputeRequest(input, output);
 
-        // why am i being asked to write an integration test for two compute engine components,
-        // when one hasnt even been implemented yet?????
+        computationCoordinator.compute(computeRequest);
+
+        assertEquals(output.getOutput(), "1,6,23");
 
 
 
