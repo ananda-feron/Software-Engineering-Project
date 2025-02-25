@@ -20,6 +20,6 @@ public class TestComputeEngineAPI {
         String result = computeEngineAPI.compute(12);
 
         //assert
-        Assertions.assertEquals("9", result);
+        Assertions.assertEquals("12, 6, 3, 10, 5, 16, 8, 4, 2, 1", result);
     }
 }
