@@ -15,24 +15,22 @@ public class ComputationCoordinatorImpl implements ComputationCoordinatorAPI {
     @Override
     public ComputeResult compute(ComputeRequest request) {
 
-        DataStoreReadResult result = dataStore.read(request.getInputConfig());
+        DataStoreReadResult readResult = dataStore.read(request.getInputConfig());
 
-        if (result.getStatus() == DataStoreReadResult.Status.SUCCESS) {
+        if (readResult.getStatus() == DataStoreReadResult.Status.SUCCESS) {
 
-            Iterator<Integer> iterator = result.getResults().iterator();
+            Iterator<Integer> iterator = readResult.getResults().iterator();
 
             while (iterator.hasNext()) {
                 int value = iterator.next();
                 String computedValue = computeEngine.compute(value);
                 WriteResult writeResult = dataStore.appendSingleResult(request.getOutputConfig(), computedValue, request.getDelimiter()); //writes using same delimiter specified for input
                 if (writeResult.getStatus() != WriteResult.WriteResultStatus.SUCCESS) {
-                    //return a ComputeResult with write error! TODO: (figure out how tf ComputeResult interface works)
+                    return new ComputeResultImpl(ComputeResult.ComputeResultStatus.FAILURE, "Error writing data.");
                 }
             }
 
         }
-
-        return null; //null for now.
-
+        return new ComputeResultImpl(ComputeResult.ComputeResultStatus.SUCCESS, "Computation Successful");
     }
 }
