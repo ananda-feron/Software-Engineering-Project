@@ -1,6 +1,7 @@
 package smoke;
 
 import apis.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertTrue;
@@ -22,8 +23,8 @@ public class TestDataStoreAPI {
         WriteResult writeResult = dataStore.appendSingleResult(outputConfig, "9", ',');
 
         //assert
-        assertTrue(dataStoreReadResult.getStatus() == DataStoreReadResult.Status.SUCCESS);
-        assertTrue(writeResult.getStatus() == WriteResult.WriteResultStatus.SUCCESS);
+        Assertions.assertSame(DataStoreReadResult.Status.SUCCESS, dataStoreReadResult.getStatus());
+        Assertions.assertSame(WriteResult.WriteResultStatus.SUCCESS, writeResult.getStatus());
 
         //TODO: add assertEquals for further verification?
 
