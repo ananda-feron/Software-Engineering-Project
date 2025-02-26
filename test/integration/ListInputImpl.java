@@ -13,7 +13,7 @@ public class ListInputImpl implements InputConfig {
     }
 
     @Override
-    public List<Integer> getInputData() {
+    public List<Integer> getInput() {
         return inputData;
     }
 }
