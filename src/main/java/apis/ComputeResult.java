@@ -19,7 +19,7 @@ public interface ComputeResult {
 
     public static enum ComputeResultStatus {
         SUCCESS(true),
-        INVALID_REQUEST(false),
+        INVALID_REQUEST(false), //TODO:
         FAILURE(false);
 
         private final boolean success;

@@ -20,12 +20,13 @@ public class TestDataStoreAPI {
 
         //act
         DataStoreReadResult dataStoreReadResult = dataStore.read(inputConfig);
-        WriteResult writeResult = dataStore.appendSingleResult(outputConfig, "9", ',');
+        WriteResult writeResult = dataStore.appendSingleResult(outputConfig, "9", ','); //fix
 
         //assert
         Assertions.assertSame(DataStoreReadResult.Status.SUCCESS, dataStoreReadResult.getStatus());
         Assertions.assertSame(WriteResult.WriteResultStatus.SUCCESS, writeResult.getStatus());
 
+        //TODO: this is still failing because DataStoreImpl is unimplemented!
         //TODO: add assertEquals for further verification?
 
 

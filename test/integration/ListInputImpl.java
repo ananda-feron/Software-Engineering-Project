@@ -14,6 +14,6 @@ public class ListInputImpl implements InputConfig {
 
     @Override
     public List<Integer> getInputData() {
-        return null;
+        return inputData;
     }
 }
