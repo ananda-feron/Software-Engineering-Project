@@ -1,7 +1,7 @@
 package apis;
 
-public interface InputConfig {
+public interface InputConfig<T> {
 
-    Object getInput();
+    T getInput();
 
 }
