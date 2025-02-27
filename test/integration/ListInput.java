@@ -2,6 +2,7 @@ package integration;
 
 import apis.InputConfig;
 
+import java.io.File;
 import java.util.List;
 
 public class ListInput implements InputConfig<File> {
@@ -13,7 +14,7 @@ public class ListInput implements InputConfig<File> {
     }
 
     @Override
-    public List<Integer> getInput() {
-        return inputData;
+    public File getInput() {
+        return (File) inputData;
     }
 }
