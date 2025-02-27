@@ -4,7 +4,7 @@ import apis.InputConfig;
 
 import java.io.File;
 
-public class FileInput implements InputConfig<File> {
+public class FileInput implements InputConfig {
 
     private final File inputFile;
 

@@ -2,10 +2,9 @@ package integration;
 
 import apis.OutputConfig;
 
-import java.io.File;
 import java.util.List;
 
-public class ListOutput implements OutputConfig<File> {
+public class ListOutput implements OutputConfig {
 
     private final List<String> output;
 
@@ -14,8 +13,8 @@ public class ListOutput implements OutputConfig<File> {
     }
 
     @Override
-    public File getOutput() {
-        return (File) output;
+    public List<String> getOutput() {
+        return output;
     }
 
 }

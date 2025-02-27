@@ -23,4 +23,13 @@ public class TestComputeEngineAPI {
         //assert
         Assertions.assertEquals("12,6,3,10,5,16,8,4,2,1", result);
     }
+
+    @Test
+    public void testComputeEngineWithNegativeNumber() {
+        ComputeEngineAPI computeEngineAPI = new ComputeEngine();
+
+        // Assert that calling compute() with a negative number throws an exception
+        Assertions.assertThrows(IllegalArgumentException.class, () -> computeEngineAPI.compute(-9));
+    }
+
 }

@@ -2,10 +2,9 @@ package integration;
 
 import apis.InputConfig;
 
-import java.io.File;
 import java.util.List;
 
-public class ListInput implements InputConfig<File> {
+public class ListInput implements InputConfig {
 
     private final List<Integer> inputData;
 
@@ -14,7 +13,7 @@ public class ListInput implements InputConfig<File> {
     }
 
     @Override
-    public File getInput() {
-        return (File) inputData;
+    public List<Integer> getInput() {
+        return inputData;
     }
 }

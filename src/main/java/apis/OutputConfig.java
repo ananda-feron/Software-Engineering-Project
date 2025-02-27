@@ -1,6 +1,6 @@
 package apis;
 
-public interface OutputConfig<T> {
-     T getOutput();
+public interface OutputConfig {
+    Object getOutput();
 
 }

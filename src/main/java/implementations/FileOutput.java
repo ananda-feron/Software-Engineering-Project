@@ -4,7 +4,7 @@ import apis.OutputConfig;
 
 import java.io.File;
 
-public class FileOutput implements OutputConfig<File> {
+public class FileOutput implements OutputConfig {
 
     private final File outputFile;
 
