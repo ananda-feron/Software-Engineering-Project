@@ -1,11 +1,11 @@
-package apis;
+package implementations;
 
-public class ComputeResultImpl implements ComputeResult {
+public class ComputeResult implements apis.ComputeResult {
 
     private final ComputeResultStatus computeResultStatus;
     private final String failureMessage;
 
-    public ComputeResultImpl(ComputeResultStatus computeResultStatus, String failureMessage) {
+    public ComputeResult(ComputeResultStatus computeResultStatus, String failureMessage) {
         this.computeResultStatus = computeResultStatus;
         this.failureMessage = failureMessage;
     }

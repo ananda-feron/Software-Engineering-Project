@@ -1,5 +1,6 @@
 package smoke;
 
+import implementations.ComputationCoordinator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import apis.*;
@@ -9,7 +10,6 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyIterable;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -23,25 +23,25 @@ public class TestComputationCoordinatorAPI {
         DataStoreAPI mockDataStore = mock(DataStoreAPI.class);
 
         //initialize computationCoordinator
-        ComputationCoordinatorAPI computationCoordinator = new ComputationCoordinatorImpl(mockComputeEngine, mockDataStore);
+        ComputationCoordinatorAPI computationCoordinator = new ComputationCoordinator(mockComputeEngine, mockDataStore);
 
         //extra mocks
-        InputConfig inputConfig = mock(InputConfig.class);
-        OutputConfig outputConfig = mock(OutputConfig.class);
+        InputConfig mockInputConfig = mock(InputConfig.class);
+        OutputConfig mockOutputConfig = mock(OutputConfig.class);
         DataStoreReadResult mockDataStoreReadResult = mock(DataStoreReadResult.class);
         WriteResult mockWriteResult = mock(WriteResult.class);
 
         //new computeRequest
-        ComputeRequest computeRequest = new ComputeRequest(inputConfig, outputConfig, ',');
+        ComputeRequest computeRequest = new ComputeRequest(mockInputConfig, mockOutputConfig, ',');
 
         ArrayList<Integer> integers = new ArrayList<>(List.of(1,2,3));
 
         //arrange
-        when(mockDataStore.read(inputConfig)).thenReturn(mockDataStoreReadResult);
+        when(mockDataStore.read(mockInputConfig)).thenReturn(mockDataStoreReadResult);
         when(mockDataStoreReadResult.getStatus()).thenReturn(DataStoreReadResult.Status.SUCCESS);
         when(mockDataStoreReadResult.getResults()).thenReturn(integers);
         when(mockComputeEngine.compute(any(Integer.class))).thenReturn("test");
-        when(mockDataStore.appendSingleResult(outputConfig, "test", computeRequest.getDelimiter())).thenReturn(mockWriteResult);
+        when(mockDataStore.appendSingleResult(mockOutputConfig, "test", computeRequest.getDelimiter())).thenReturn(mockWriteResult);
         when(mockWriteResult.getStatus()).thenReturn(WriteResult.WriteResultStatus.SUCCESS);
 
         //act
