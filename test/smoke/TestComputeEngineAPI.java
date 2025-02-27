@@ -1,6 +1,7 @@
 package smoke;
 
 import apis.*;
+import implementations.ComputeEngine;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +15,7 @@ public class TestComputeEngineAPI {
     public void testComputeEngineAPI() {
 
         //initialize ComputeEngine;
-        ComputeEngineAPI computeEngineAPI = new ComputeEngineImpl();
+        ComputeEngineAPI computeEngineAPI = new ComputeEngine();
 
         //act
         String result = computeEngineAPI.compute(12);

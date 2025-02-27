@@ -1,10 +1,12 @@
 package integration;
 
 import apis.*;
+import implementations.DataStoreReadResultImpl;
+import implementations.WriteResultImpl;
 
 import java.util.List;
 
-public class InMemoryDataStoreImpl implements DataStoreAPI {
+public class ListDataStore implements DataStoreAPI {
     @Override
     public DataStoreReadResult read(InputConfig input) {
         List<Integer> inputList = (List<Integer>) input.getInput(); //Is this good code practice?

@@ -1,19 +1,21 @@
-package apis;
+package implementations;
+
+import apis.*;
 
 import java.util.Iterator;
 
-public class ComputationCoordinatorImpl implements ComputationCoordinatorAPI {
+public class ComputationCoordinator implements ComputationCoordinatorAPI {
 
     private final ComputeEngineAPI computeEngine;
     private final DataStoreAPI dataStore;
 
-    public ComputationCoordinatorImpl(ComputeEngineAPI computeEngine, DataStoreAPI dataStoreAPI) {
+    public ComputationCoordinator(ComputeEngineAPI computeEngine, DataStoreAPI dataStoreAPI) {
         this.computeEngine = computeEngine;
         this.dataStore = dataStoreAPI;
     }
 
     @Override
-    public ComputeResult compute(ComputeRequest request) {
+    public apis.ComputeResult compute(ComputeRequest request) {
 
         DataStoreReadResult readResult = dataStore.read(request.getInputConfig());
 
@@ -26,11 +28,11 @@ public class ComputationCoordinatorImpl implements ComputationCoordinatorAPI {
                 String computedValue = computeEngine.compute(value);
                 WriteResult writeResult = dataStore.appendSingleResult(request.getOutputConfig(), computedValue, request.getDelimiter()); //writes using same delimiter specified for input
                 if (writeResult.getStatus() != WriteResult.WriteResultStatus.SUCCESS) {
-                    return new ComputeResultImpl(ComputeResult.ComputeResultStatus.FAILURE, "Error writing data.");
+                    return new ComputeResult(apis.ComputeResult.ComputeResultStatus.FAILURE, "Error writing data.");
                 }
             }
 
         }
-        return new ComputeResultImpl(ComputeResult.ComputeResultStatus.SUCCESS, "Computation Successful");
+        return new ComputeResult(apis.ComputeResult.ComputeResultStatus.SUCCESS, "Computation Successful");
     }
 }

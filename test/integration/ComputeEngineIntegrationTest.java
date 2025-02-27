@@ -1,6 +1,8 @@
 package integration;
 
 import apis.*;
+import implementations.ComputationCoordinator;
+import implementations.ComputeEngine;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -13,12 +15,12 @@ public class ComputeEngineIntegrationTest {
     @Test
     public void computeEngineIntegrationTest() {
 
-        ComputeEngineAPI computeEngineAPI = new ComputeEngineImpl();
-        DataStoreAPI dataStoreAPI = new InMemoryDataStoreImpl();
-        ComputationCoordinatorAPI computationCoordinator = new ComputationCoordinatorImpl(computeEngineAPI, dataStoreAPI);
+        ComputeEngineAPI computeEngineAPI = new ComputeEngine();
+        DataStoreAPI dataStoreAPI = new ListDataStore();
+        ComputationCoordinatorAPI computationCoordinator = new ComputationCoordinator(computeEngineAPI, dataStoreAPI);
 
-        InputConfig input = new ListInputImpl(new ArrayList<Integer>(List.of(1,10,25)));
-        OutputConfig output = new ListOutputImpl(new ArrayList<String>());
+        InputConfig input = new ListInput(new ArrayList<Integer>(List.of(1,10,25)));
+        OutputConfig output = new ListOutput(new ArrayList<String>());
 
         ComputeRequest computeRequest = new ComputeRequest(input, output);
 

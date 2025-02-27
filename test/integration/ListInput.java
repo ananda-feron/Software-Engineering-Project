@@ -4,11 +4,11 @@ import apis.InputConfig;
 
 import java.util.List;
 
-public class ListInputImpl implements InputConfig {
+public class ListInput implements InputConfig {
 
     private final List<Integer> inputData;
 
-    public ListInputImpl(List<Integer> inputData) {
+    public ListInput(List<Integer> inputData) {
         this.inputData = inputData;
     }
 

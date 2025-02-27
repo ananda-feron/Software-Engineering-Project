@@ -1,6 +1,8 @@
-package apis;
+package implementations;
 
-public class ComputeEngineImpl implements ComputeEngineAPI {
+import apis.ComputeEngineAPI;
+
+public class ComputeEngine implements ComputeEngineAPI {
 
     @Override
     public String compute(int value) {
