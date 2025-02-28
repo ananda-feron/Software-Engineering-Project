@@ -1,9 +1,11 @@
 package integration;
 
 import apis.*;
-import implementations.ComputationCoordinator;
-import implementations.ComputeEngine;
 import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.*;
+import implementations.*;
+import integration.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,7 @@ public class ComputeEngineIntegrationTest {
     public void computeEngineIntegrationTest() {
 
         ComputeEngineAPI computeEngineAPI = new ComputeEngine();
-        DataStoreAPI dataStoreAPI = new ListDataStore();
+        DataStoreAPI dataStoreAPI = new DataStore();
         ComputationCoordinatorAPI computationCoordinator = new ComputationCoordinator(computeEngineAPI, dataStoreAPI);
 
         InputConfig input = new ListInput(new ArrayList<>(List.of(1,10,25)));
