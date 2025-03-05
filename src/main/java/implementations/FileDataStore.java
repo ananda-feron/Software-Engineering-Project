@@ -14,7 +14,7 @@ public class FileDataStore implements DataStoreAPI {
     public DataStoreReadResult read(InputConfig input) {
 
         if (input == null) {
-            throw new IllegalArgumentException("Error: input must not be null.");
+            throw new IllegalArgumentException("Error: input is invalid.");
         }
 
         List<Integer> integerList = new ArrayList<>();
