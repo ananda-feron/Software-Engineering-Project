@@ -1,7 +1,6 @@
 package implementations;
 
 import apis.*;
-import org.checkerframework.checker.units.qual.A;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +22,7 @@ public class FileDataStore implements DataStoreAPI {
                 String[] values = scanner.nextLine().split(",");
                 //assumed to be .csv file
                 for (String value : values) {
-                    try {
+                    try { //(validation)
                         integerList.add(Integer.parseInt(value));
                     } catch (NumberFormatException numberFormatException) {
                         System.err.println("skipping invalid number: " + value);
@@ -31,7 +30,7 @@ public class FileDataStore implements DataStoreAPI {
                 }
             }
         } catch (IOException ioException) {
-            System.err.println("Error reading file.");
+            System.err.println("Error reading file. Error: " + ioException.getMessage());
             System.exit(1);
         }
 
@@ -42,12 +41,16 @@ public class FileDataStore implements DataStoreAPI {
     public WriteResult appendSingleResult(OutputConfig output, String result, char delimiter) {
         try {
             File outputFile = (File) output.getOutput();
+            //validation
+            if (!outputFile.exists()) {
+                System.out.println("Output file " + outputFile + " does not exist. creating it...");
+            }
             FileWriter writer = new FileWriter(outputFile);
             writer.write(result + delimiter + "\n");
             writer.close();
 
         } catch (IOException ioException) {
-            System.err.println("error writing result: " + result);
+            System.err.println("Error writing to file. Error: " + result);
             System.exit(1);
         }
         return new WriteResultImpl(WriteResult.WriteResultStatus.SUCCESS);

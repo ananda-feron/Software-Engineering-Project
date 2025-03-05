@@ -18,6 +18,10 @@ public class ComputationCoordinator implements ComputationCoordinatorAPI {
     public apis.ComputeResult compute(ComputeRequest request) {
 
         DataStoreReadResult readResult = dataStore.read(request.getInputConfig());
+        //validation
+        if (readResult == null) {
+            System.err.println("Error reading input file: " + request.getInputConfig());
+        }
 
         if (readResult.getStatus() == DataStoreReadResult.Status.SUCCESS) {
 
@@ -27,11 +31,11 @@ public class ComputationCoordinator implements ComputationCoordinatorAPI {
                 int value = iterator.next();
                 String computedValue = computeEngine.compute(value);
                 WriteResult writeResult = dataStore.appendSingleResult(request.getOutputConfig(), computedValue, request.getDelimiter()); //writes using same delimiter specified for input
+                //validation
                 if (writeResult.getStatus() != WriteResult.WriteResultStatus.SUCCESS) {
                     return new ComputeResult(apis.ComputeResult.ComputeResultStatus.FAILURE, "Error writing data.");
                 }
             }
-
         }
         return new ComputeResult(apis.ComputeResult.ComputeResultStatus.SUCCESS, "Computation Successful");
     }
