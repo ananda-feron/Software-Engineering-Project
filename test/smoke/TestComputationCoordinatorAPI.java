@@ -60,7 +60,7 @@ public class TestComputationCoordinatorAPI {
 
         ComputeRequest computeRequest = null;
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> computationCoordinator.compute(computeRequest));
-
+        Assertions.assertEquals(ComputeResult.ComputeResultStatus.FAILURE ,computationCoordinator.compute(computeRequest).getStatus());
+        Assertions.assertEquals("Error: request is invalid", computationCoordinator.compute(computeRequest).getFailureMessage());
     }
 }

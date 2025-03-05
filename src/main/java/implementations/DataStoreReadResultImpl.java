@@ -9,10 +9,12 @@ public class DataStoreReadResultImpl implements DataStoreReadResult {
 
     private final Status status;
     private final List<Integer> results;
+    private final String failureMessage;
 
-    public DataStoreReadResultImpl(Status status, List<Integer> results) {
+    public DataStoreReadResultImpl(Status status, List<Integer> results, String failureMessage) {
         this.status = status;
         this.results = results;
+        this.failureMessage = failureMessage;
     }
 
     @Nullable
@@ -24,5 +26,9 @@ public class DataStoreReadResultImpl implements DataStoreReadResult {
     @Override
     public Status getStatus() {
         return status;
+    }
+
+    public String getFailureMessage() {
+        return failureMessage;
     }
 }
