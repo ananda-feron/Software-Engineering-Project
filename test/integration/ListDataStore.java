@@ -10,7 +10,7 @@ public class ListDataStore implements DataStoreAPI {
     @Override
     public DataStoreReadResult read(InputConfig input) {
         List<Integer> inputList = (List<Integer>) input.getInput(); //Is this good code practice?
-        return new DataStoreReadResultImpl(DataStoreReadResult.Status.SUCCESS, inputList);
+        return new DataStoreReadResultImpl(DataStoreReadResult.Status.SUCCESS, inputList, "Successfully read list.");
     }
 
 

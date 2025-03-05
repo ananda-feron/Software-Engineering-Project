@@ -14,7 +14,7 @@ public class FileDataStore implements DataStoreAPI {
     public DataStoreReadResult read(InputConfig input) {
 
         if (input == null) {
-            throw new IllegalArgumentException("Error: input is invalid.");
+            return new DataStoreReadResultImpl(DataStoreReadResult.Status.FAILURE, null, "Input is invalid.");
         }
 
         List<Integer> integerList = new ArrayList<>();
@@ -34,22 +34,20 @@ public class FileDataStore implements DataStoreAPI {
                 }
             }
         } catch (IOException ioException) {
-            System.err.println("Error reading file. Error: " + ioException.getMessage());
-            System.exit(1);
+            return new DataStoreReadResultImpl(DataStoreReadResult.Status.FAILURE, null, "Error reading file: " + ioException.getMessage());
         }
 
-        return new DataStoreReadResultImpl(DataStoreReadResult.Status.SUCCESS, integerList);
+        return new DataStoreReadResultImpl(DataStoreReadResult.Status.SUCCESS, integerList, "Successfully read file.");
     }
 
     @Override
     public WriteResult appendSingleResult(OutputConfig output, String result, char delimiter) {
 
         if (output == null) {
-            throw new IllegalArgumentException("Error: output must not be null.");
+            return new WriteResultImpl(WriteResult.WriteResultStatus.FAILURE, "Output is invalid.");
         }
         try {
             File outputFile = (File) output.getOutput();
-            //validation
             if (!outputFile.exists()) {
                 System.out.println("Output file " + outputFile + " does not exist. creating it...");
             }
@@ -58,9 +56,8 @@ public class FileDataStore implements DataStoreAPI {
             writer.close();
 
         } catch (IOException ioException) {
-            System.err.println("Error writing to file. Error: " + result);
-            System.exit(1);
+            return new WriteResultImpl(WriteResult.WriteResultStatus.FAILURE, "Error writing to file: " + ioException.getMessage());
         }
-        return new WriteResultImpl(WriteResult.WriteResultStatus.SUCCESS);
+        return new WriteResultImpl(WriteResult.WriteResultStatus.SUCCESS, "Success writing to file.");
     }
 }
