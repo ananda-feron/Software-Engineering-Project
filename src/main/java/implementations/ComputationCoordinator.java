@@ -18,7 +18,8 @@ public class ComputationCoordinator implements ComputationCoordinatorAPI {
     public ComputeResult compute(ComputeRequest request) {
       
         if (request == null) {
-            throw new IllegalArgumentException("Error: request is null.");
+//            throw new IllegalArgumentException("Error: request is null.");
+            return new ComputeResult(apis.ComputeResult.ComputeResultStatus.FAILURE, "Error: request is invalid");
         }
         try {
 
