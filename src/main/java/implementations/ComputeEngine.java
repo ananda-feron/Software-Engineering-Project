@@ -8,7 +8,7 @@ public class ComputeEngine implements ComputeEngineAPI {
     public String compute(int value) {
 
         if(value <= 0){
-            throw new IllegalArgumentException("Error: value most be positive. Your input: " + value);
+            return "Error: value must be positive. Your input: " + value;
         }
 
         StringBuilder builder = new StringBuilder();
