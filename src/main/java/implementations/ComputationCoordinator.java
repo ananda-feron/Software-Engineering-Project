@@ -16,11 +16,14 @@ public class ComputationCoordinator implements ComputationCoordinatorAPI {
 
     @Override
     public apis.ComputeResult compute(ComputeRequest request) {
+        if (request == null) {
+            throw new IllegalArgumentException("Error: request is null.");
+        }
 
         DataStoreReadResult readResult = dataStore.read(request.getInputConfig());
-        //validation
+
         if (readResult == null) {
-            System.err.println("Error reading input file: " + request.getInputConfig());
+            System.err.println("Error reading input file: " + request.getInputConfig().getInput());
         }
 
         if (readResult.getStatus() == DataStoreReadResult.Status.SUCCESS) {
@@ -31,7 +34,6 @@ public class ComputationCoordinator implements ComputationCoordinatorAPI {
                 int value = iterator.next();
                 String computedValue = computeEngine.compute(value);
                 WriteResult writeResult = dataStore.appendSingleResult(request.getOutputConfig(), computedValue, request.getDelimiter()); //writes using same delimiter specified for input
-                //validation
                 if (writeResult.getStatus() != WriteResult.WriteResultStatus.SUCCESS) {
                     return new ComputeResult(apis.ComputeResult.ComputeResultStatus.FAILURE, "Error writing data.");
                 }

@@ -7,7 +7,6 @@ public class ComputeEngine implements ComputeEngineAPI {
     @Override
     public String compute(int value) {
 
-        //validation
         if(value <= 0){
             throw new IllegalArgumentException("Error: value most be positive. Your input: " + value);
         }

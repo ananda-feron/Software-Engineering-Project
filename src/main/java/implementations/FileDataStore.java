@@ -13,6 +13,10 @@ public class FileDataStore implements DataStoreAPI {
     @Override
     public DataStoreReadResult read(InputConfig input) {
 
+        if (input == null) {
+            throw new IllegalArgumentException("Error: input must not be null.");
+        }
+
         List<Integer> integerList = new ArrayList<>();
 
         try {
@@ -39,6 +43,10 @@ public class FileDataStore implements DataStoreAPI {
 
     @Override
     public WriteResult appendSingleResult(OutputConfig output, String result, char delimiter) {
+
+        if (output == null) {
+            throw new IllegalArgumentException("Error: output must not be null.");
+        }
         try {
             File outputFile = (File) output.getOutput();
             //validation
