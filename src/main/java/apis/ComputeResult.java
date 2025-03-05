@@ -19,8 +19,9 @@ public interface ComputeResult {
 
     public static enum ComputeResultStatus {
         SUCCESS(true),
-        INVALID_REQUEST(false), //TODO:
-        FAILURE(false);
+        FAILURE(false),
+        COMPUTATION_FAILURE(false),
+        WRITE_FAILURE(false);
 
         private final boolean success;
 
