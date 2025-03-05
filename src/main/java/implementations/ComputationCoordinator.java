@@ -16,10 +16,11 @@ public class ComputationCoordinator implements ComputationCoordinatorAPI {
 
     @Override
     public ComputeResult compute(ComputeRequest request) {
-
+      
         if (request == null) {
-            return new ComputeResult(apis.ComputeResult.ComputeResultStatus.FAILURE, "Request is null.");
+            throw new IllegalArgumentException("Error: request is null.");
         }
+      
         try {
 
             DataStoreReadResult readResult = dataStore.read(request.getInputConfig());
@@ -49,10 +50,8 @@ public class ComputationCoordinator implements ComputationCoordinatorAPI {
                     } catch (Exception e) {
                         return new ComputeResult(apis.ComputeResult.ComputeResultStatus.WRITE_FAILURE, "Error writing to output file: " + e.getMessage());
                     }
-
                 }
             }
-
             return new ComputeResult(apis.ComputeResult.ComputeResultStatus.SUCCESS, "Computation Successful");
 
         } catch (Exception e) {
