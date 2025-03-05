@@ -50,7 +50,6 @@ public class TestComputationCoordinatorAPI {
         //assert
         Assertions.assertTrue(computeResult.getStatus().isSuccess());
     }
-
     @Test
     public void testComputationCoordinatorNullRequest() {
 
