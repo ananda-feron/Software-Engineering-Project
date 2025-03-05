@@ -27,8 +27,10 @@ public class ComputeEngine implements ComputeEngineAPI {
                         value = 3 * value + 1;
                     }
                     builder.append(",").append(value);
-                } catch (Exception e){
-                    return "An error occurred: " + e.getMessage();
+                } catch (ArithmeticException e) {
+                    throw new ArithmeticException("An error occurred during computation: " + e.getMessage());
+                } catch (Exception e) {
+                    throw new RuntimeException("An unexpected error occurred: " + e.getMessage());
                 }
             }
 
