@@ -20,7 +20,6 @@ public class ComputationCoordinator implements ComputationCoordinatorAPI {
         if (request == null) {
             throw new IllegalArgumentException("Error: request is null.");
         }
-      
         try {
 
             DataStoreReadResult readResult = dataStore.read(request.getInputConfig());

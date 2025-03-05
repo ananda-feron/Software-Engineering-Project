@@ -49,10 +49,18 @@ public class TestComputationCoordinatorAPI {
 
         //assert
         Assertions.assertTrue(computeResult.getStatus().isSuccess());
-        //fails because ComputationCoordinator.compute() returns null right now. this is what we want.
+    }
 
-        //TODO: remove hardcoded values?
+    @Test
+    public void testComputationCoordinatorInvalidRequest() {
 
+        ComputeEngineAPI mockComputeEngine = mock(ComputeEngineAPI.class);
+        DataStoreAPI mockDataStore = mock(DataStoreAPI.class);
+        ComputationCoordinatorAPI computationCoordinator = new ComputationCoordinator(mockComputeEngine, mockDataStore);
+
+        ComputeRequest computeRequest = null;
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {computationCoordinator.compute(computeRequest);});
 
     }
 }
