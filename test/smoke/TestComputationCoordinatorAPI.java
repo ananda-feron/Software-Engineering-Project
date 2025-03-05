@@ -52,15 +52,16 @@ public class TestComputationCoordinatorAPI {
     }
 
     @Test
-    public void testComputationCoordinatorInvalidRequest() {
+    public void testComputationCoordinatorNullRequest() {
 
         ComputeEngineAPI mockComputeEngine = mock(ComputeEngineAPI.class);
         DataStoreAPI mockDataStore = mock(DataStoreAPI.class);
         ComputationCoordinatorAPI computationCoordinator = new ComputationCoordinator(mockComputeEngine, mockDataStore);
 
         ComputeRequest computeRequest = null;
+        ComputeResult computeResult = computationCoordinator.compute(computeRequest);
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> computationCoordinator.compute(computeRequest));
-
+        Assertions.assertEquals(computeResult.getStatus(), ComputeResult.ComputeResultStatus.FAILURE);
+        Assertions.assertEquals(computeResult.getFailureMessage(), "Invalid Request");
     }
 }

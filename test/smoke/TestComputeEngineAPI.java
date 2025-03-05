@@ -28,8 +28,8 @@ public class TestComputeEngineAPI {
     public void testComputeEngineWithNegativeNumber() {
         ComputeEngineAPI computeEngineAPI = new ComputeEngine();
 
-        // Assert that calling compute() with a negative number throws an exception
-        Assertions.assertThrows(IllegalArgumentException.class, () -> computeEngineAPI.compute(-9));
+        String result = computeEngineAPI.compute(-12);
+        Assertions.assertEquals(result, "Error: value must be positive. Your input: " + "-12");
     }
 
 }
