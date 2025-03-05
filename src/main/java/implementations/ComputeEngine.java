@@ -7,6 +7,7 @@ public class ComputeEngine implements ComputeEngineAPI {
     @Override
     public String compute(int value) {
 
+        try {
             if (value <= 0) {
                 return "Error: Number cannot be negative";
             }
@@ -35,5 +36,9 @@ public class ComputeEngine implements ComputeEngineAPI {
             }
 
             return builder.toString();
+
+        } catch (Exception e){
+            return "Unexpected runtime error: " + e.getMessage();
+        }
     }
 }
