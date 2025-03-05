@@ -25,11 +25,20 @@ public class TestComputeEngineAPI {
     }
 
     @Test
-    public void testComputeEngineWithNegativeNumber() {
+    public void testNegativeNumberError() {
         ComputeEngineAPI computeEngineAPI = new ComputeEngine();
 
         // Assert that calling compute() with a negative number throws an exception
-        Assertions.assertThrows(IllegalArgumentException.class, () -> computeEngineAPI.compute(-9));
+        Assertions.assertEquals("Invalid input: " + -10 + ". Please provide a positive number.",   computeEngineAPI.compute(-10));
+    }
+
+    @Test
+    public void testOverflowError() {
+        ComputeEngineAPI computeEngineAPI = new ComputeEngine();
+
+        //I don't know if this is redundant since runtime errors exist
+        //However we do need to return a value instead of throw an exception
+        Assertions.assertEquals("Input value is too large and could cause overflow during computation.", computeEngineAPI.compute(715827883));
     }
 
 }

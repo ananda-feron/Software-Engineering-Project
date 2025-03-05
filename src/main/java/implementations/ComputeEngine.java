@@ -6,11 +6,13 @@ public class ComputeEngine implements ComputeEngineAPI {
 
     @Override
     public String compute(int value) {
-
         try {
-
             if (value <= 0) {
-                throw new IllegalArgumentException("Error: value most be positive. Your input: " + value);
+                return "Invalid input: " + value + ". Please provide a positive number.";
+            }
+
+            if (value > Integer.MAX_VALUE / 3) {
+                return "Input value is too large and could cause overflow during computation.";
             }
 
             StringBuilder builder = new StringBuilder();
@@ -27,9 +29,8 @@ public class ComputeEngine implements ComputeEngineAPI {
             }
 
             return builder.toString();
-
-        } catch (RuntimeException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e){
+         return "An error occurred: " + e.getMessage();
         }
     }
 }
