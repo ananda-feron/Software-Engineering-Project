@@ -24,8 +24,6 @@ public class ComputeEngine implements ComputeEngineAPI {
             builder.append(",").append(value);
         }
 
-//        System.out.println(builder);
-
         return builder.toString();
     }
 }
