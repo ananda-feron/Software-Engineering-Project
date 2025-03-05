@@ -60,7 +60,7 @@ public class TestComputationCoordinatorAPI {
 
         ComputeRequest computeRequest = null;
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {computationCoordinator.compute(computeRequest);});
+        Assertions.assertThrows(IllegalArgumentException.class, () -> computationCoordinator.compute(computeRequest));
 
     }
 }
