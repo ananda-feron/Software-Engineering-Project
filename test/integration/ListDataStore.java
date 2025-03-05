@@ -18,7 +18,7 @@ public class ListDataStore implements DataStoreAPI {
     public WriteResult appendSingleResult(OutputConfig output, String result, char delimiter) {
         List<String> outputList = (List<String>) output.getOutput(); //ditto
         outputList.add(result);
-        return new WriteResultImpl(WriteResult.WriteResultStatus.SUCCESS);
+        return new WriteResultImpl(WriteResult.WriteResultStatus.SUCCESS, "Successfully appended '" + result + "' to list.");
     }
 
 }
