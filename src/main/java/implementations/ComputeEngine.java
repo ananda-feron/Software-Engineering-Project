@@ -8,11 +8,11 @@ public class ComputeEngine implements ComputeEngineAPI {
     public String compute(int value) {
 
             if (value <= 0) {
-                throw new IllegalArgumentException("Number cannot be negative");
+                return "Error: Number cannot be negative";
             }
 
             if (value > Integer.MAX_VALUE / 3) {
-                throw new IllegalArgumentException("Number is too large for computation");
+                return "Error: Number is too large for computation";
             }
 
             StringBuilder builder = new StringBuilder();
@@ -28,9 +28,9 @@ public class ComputeEngine implements ComputeEngineAPI {
                     }
                     builder.append(",").append(value);
                 } catch (ArithmeticException e) {
-                    throw new ArithmeticException("An error occurred during computation: " + e.getMessage());
+                    return "An error occurred during computation: " + e.getMessage();
                 } catch (Exception e) {
-                    throw new RuntimeException("An unexpected error occurred: " + e.getMessage());
+                    return "An unexpected error occurred: " + e.getMessage();
                 }
             }
 
