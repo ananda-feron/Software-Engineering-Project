@@ -6,5 +6,4 @@ import project.annotations.ConceptualAPI;
 public interface ComputeEngineAPI {
 
     String compute(int value);
-
 }
