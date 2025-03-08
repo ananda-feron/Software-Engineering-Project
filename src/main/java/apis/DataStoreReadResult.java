@@ -13,4 +13,6 @@ public interface DataStoreReadResult {
     public Iterable<Integer> getResults();
 
     public Status getStatus();
+
+    public String getFailureMessage();
 }

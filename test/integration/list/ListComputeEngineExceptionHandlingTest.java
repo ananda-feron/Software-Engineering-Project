@@ -1,4 +1,4 @@
-package integration;
+package integration.list;
 
 import apis.*;
 import implementations.ComputationCoordinator;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class ComputeEngineIntegrationTest {
+public class ListComputeEngineExceptionHandlingTest {
 
     @Test
     public void computeEngineIntegrationTest() {
