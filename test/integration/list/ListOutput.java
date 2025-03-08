@@ -1,4 +1,4 @@
-package integration;
+package integration.list;
 
 import apis.OutputConfig;
 

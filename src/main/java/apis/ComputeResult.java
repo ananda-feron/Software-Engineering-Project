@@ -5,7 +5,7 @@ public interface ComputeResult {
     public ComputeResult SUCCESS = new ComputeResult() {
 
         public ComputeResultStatus getStatus() {
-            return ComputeResultStatus.SUCCESS; //TODO: does this always return a successful getStatus?
+            return ComputeResultStatus.SUCCESS;
         }
 
         public String getFailureMessage() {
