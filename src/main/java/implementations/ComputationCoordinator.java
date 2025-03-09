@@ -41,17 +41,17 @@ public class ComputationCoordinator implements ComputationCoordinatorAPI {
                     } catch (Exception e) {
                         return new ComputeResult(apis.ComputeResult.ComputeResultStatus.WRITE_FAILURE, "Error writing to output file: " + e.getMessage());
                     }
-
                 }
-            }
-            else {
+            } else {
                 return new ComputeResult(apis.ComputeResult.ComputeResultStatus.FAILURE, readResult.getFailureMessage());
             }
 
             return new ComputeResult(apis.ComputeResult.ComputeResultStatus.SUCCESS, "Computation Successful");
 
         } catch (Exception e) {
+
             return new ComputeResult(apis.ComputeResult.ComputeResultStatus.FAILURE, "Unexpected runtime error: " + e.getMessage());
+            
         }
     }
 }
