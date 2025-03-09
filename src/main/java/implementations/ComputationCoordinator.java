@@ -21,23 +21,15 @@ public class ComputationCoordinator implements ComputationCoordinatorAPI {
             return new ComputeResult(apis.ComputeResult.ComputeResultStatus.FAILURE, "Error: request is invalid");
         }
         try {
-
             DataStoreReadResult readResult = dataStore.read(request.getInputConfig());
-
             if (readResult.getStatus() == DataStoreReadResult.Status.SUCCESS) {
-
                 Iterator<Integer> iterator = readResult.getResults().iterator();
-
                 while (iterator.hasNext()) {
-
                     int value = iterator.next();
-
                     String computedValue = computeEngine.compute(value);
-
                     WriteResult writeResult;
                     try {
                         writeResult = dataStore.appendSingleResult(request.getOutputConfig(), computedValue, request.getDelimiter()); //writes using same delimiter specified for input
-
                     } catch (Exception e) {
                         return new ComputeResult(apis.ComputeResult.ComputeResultStatus.WRITE_FAILURE, "Error writing to output file: " + e.getMessage());
                     }
@@ -45,13 +37,9 @@ public class ComputationCoordinator implements ComputationCoordinatorAPI {
             } else {
                 return new ComputeResult(apis.ComputeResult.ComputeResultStatus.FAILURE, readResult.getFailureMessage());
             }
-
             return new ComputeResult(apis.ComputeResult.ComputeResultStatus.SUCCESS, "Computation Successful");
-
         } catch (Exception e) {
-
             return new ComputeResult(apis.ComputeResult.ComputeResultStatus.FAILURE, "Unexpected runtime error: " + e.getMessage());
-            
         }
     }
 }
