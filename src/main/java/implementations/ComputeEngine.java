@@ -2,6 +2,7 @@ package implementations;
 
 import apis.ComputeEngineAPI;
 
+
 public class ComputeEngine implements ComputeEngineAPI {
 
     @Override
@@ -9,12 +10,9 @@ public class ComputeEngine implements ComputeEngineAPI {
 
         try {
             if (value <= 0) {
-                return "Error: Number cannot be negative";
+                return "Number cannot be negative";
             }
 
-            if (value > Integer.MAX_VALUE / 3) {
-                return "Error: Number is too large for computation";
-            }
 
             StringBuilder builder = new StringBuilder();
 

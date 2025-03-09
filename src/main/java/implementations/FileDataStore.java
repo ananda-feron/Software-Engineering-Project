@@ -18,10 +18,11 @@ public class FileDataStore implements DataStoreAPI {
                 return new DataStoreReadResultImpl(DataStoreReadResult.Status.FAILURE, null, "Input is invalid.");
             }
 
+
             List<Integer> integerList = new ArrayList<>();
 
             try {
-                File inputFile = (File) input.getInput(); //is this cast fine?
+                File inputFile = (File) input.getInput();
                 Scanner scanner = new Scanner(inputFile);
                 while (scanner.hasNextLine()) {
                     String[] values = scanner.nextLine().split(",");

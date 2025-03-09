@@ -18,32 +18,15 @@ public class ComputationCoordinator implements ComputationCoordinatorAPI {
     public ComputeResult compute(ComputeRequest request) {
       
         if (request == null) {
-//            throw new IllegalArgumentException("Error: request is null.");
             return new ComputeResult(apis.ComputeResult.ComputeResultStatus.FAILURE, "Error: request is invalid");
         }
         try {
-
             DataStoreReadResult readResult = dataStore.read(request.getInputConfig());
-
-            if (readResult == null) {
-                return new ComputeResult(apis.ComputeResult.ComputeResultStatus.FAILURE, "Error reading input file: " + request.getInputConfig().getInput().toString());
-            }
-
             if (readResult.getStatus() == DataStoreReadResult.Status.SUCCESS) {
-
                 Iterator<Integer> iterator = readResult.getResults().iterator();
-
                 while (iterator.hasNext()) {
-
                     int value = iterator.next();
-
-                    String computedValue;
-                    try {
-                        computedValue = computeEngine.compute(value);
-                    } catch (Exception e) {
-                        return new ComputeResult(apis.ComputeResult.ComputeResultStatus.COMPUTATION_FAILURE, "Error computing value: " + e.getMessage());
-                    }
-
+                    String computedValue = computeEngine.compute(value);
                     WriteResult writeResult;
                     try {
                         writeResult = dataStore.appendSingleResult(request.getOutputConfig(), computedValue, request.getDelimiter()); //writes using same delimiter specified for input
@@ -51,9 +34,10 @@ public class ComputationCoordinator implements ComputationCoordinatorAPI {
                         return new ComputeResult(apis.ComputeResult.ComputeResultStatus.WRITE_FAILURE, "Error writing to output file: " + e.getMessage());
                     }
                 }
+            } else {
+                return new ComputeResult(apis.ComputeResult.ComputeResultStatus.FAILURE, readResult.getFailureMessage());
             }
             return new ComputeResult(apis.ComputeResult.ComputeResultStatus.SUCCESS, "Computation Successful");
-
         } catch (Exception e) {
             return new ComputeResult(apis.ComputeResult.ComputeResultStatus.FAILURE, "Unexpected runtime error: " + e.getMessage());
         }
