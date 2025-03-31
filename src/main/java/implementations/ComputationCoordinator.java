@@ -9,9 +9,10 @@ public class ComputationCoordinator implements ComputationCoordinatorAPI {
     private final ComputeEngineAPI computeEngine;
     private final DataStoreAPI dataStore;
 
-    public ComputationCoordinator(ComputeEngineAPI computeEngine, DataStoreAPI dataStoreAPI) {
+    public ComputationCoordinator(ComputeEngineAPI computeEngine, DataStoreAPI dataStore) {
+
         this.computeEngine = computeEngine;
-        this.dataStore = dataStoreAPI;
+        this.dataStore = dataStore;
     }
 
     @Override

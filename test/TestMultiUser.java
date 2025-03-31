@@ -8,6 +8,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import apis.ComputationCoordinatorAPI;
+import apis.ComputeRequest;
+import apis.ComputeResult;
+import implementations.ComputationCoordinator;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,13 +19,15 @@ public class TestMultiUser {
 	
 	// TODO 1: change the type of this variable to the name you're using for your @NetworkAPI
 	// interface
-	private ComputationCoordinatorAPI coordinator;
+	private ComputationCoordinator coordinator;
 	
 	@BeforeEach
 	public void initializeComputeEngine() {
 		//TODO 2: create an instance of the implementation of your @NetworkAPI; this is the component
 		// that the user will make requests to
-		// Store it in the 'coordinator' instance variable
+		ComputationCoordinator instance = new ComputationCoordinator();
+        // Store it in the 'coordinator' instance variable
+		coordinator = instance;
 	}
 
 	@Test
