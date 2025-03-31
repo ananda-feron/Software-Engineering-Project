@@ -1,4 +1,5 @@
 import apis.ComputationCoordinatorAPI;
+import implementations.ComputationCoordinator;
 
 import java.io.File;
 
@@ -7,9 +8,9 @@ public class TestUser {
 	
 	// TODO 3: change the type of this variable to the name you're using for your
 	// @NetworkAPI interface; also update the parameter passed to the constructor
-	private final ComputationCoordinatorAPI coordinator;
+	private final ComputationCoordinator coordinator;
 
-	public TestUser(ComputationCoordinatorAPI coordinator) {
+	public TestUser(ComputationCoordinator coordinator) {
 		this.coordinator = coordinator;
 	}
 
