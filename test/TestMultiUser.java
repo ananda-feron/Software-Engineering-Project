@@ -9,22 +9,28 @@ import java.util.concurrent.Future;
 
 import apis.*;
 import implementations.ComputationCoordinator;
+import implementations.ComputeEngine;
+import implementations.FileDataStore;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.mockito.Mockito.mock;
 
 public class TestMultiUser {
 	
 	// TODO 1: change the type of this variable to the name you're using for your @NetworkAPI
 	// interface
 	private ComputationCoordinator coordinator;
-	private ComputeEngineAPI computeEngine;
-	private DataStoreAPI dataStore;
+	private ComputeEngine computeEngine;
+	private FileDataStore dataStore;
 	
 	@BeforeEach
 	public void initializeComputeEngine() {
 		//TODO 2: create an instance of the implementation of your @NetworkAPI; this is the component
 		// that the user will make requests to
+		computeEngine = new ComputeEngine();
+		dataStore = new FileDataStore();
 		ComputationCoordinator instance = new ComputationCoordinator(computeEngine, dataStore);
         // Store it in the 'coordinator' instance variable
 		coordinator = instance;
