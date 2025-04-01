@@ -56,7 +56,7 @@ public class FileDataStore implements DataStoreAPI {
                 if (!outputFile.exists()) {
                     System.out.println("Output file " + outputFile + " does not exist. creating it...");
                 }
-                FileWriter writer = new FileWriter(outputFile);
+                FileWriter writer = new FileWriter(outputFile, true);
                 writer.write(result + delimiter + "\n");
                 writer.close();
 
