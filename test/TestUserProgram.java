@@ -6,7 +6,7 @@ import implementations.FileDataStore;
 
 import java.io.File;
 
-public class testUserProgram {
+public class TestUserProgram {
     public static void main(String[] args) {
         // Create the required components for ComputationCoordinator
         ComputeEngineAPI computeEngine = new ComputeEngine(); // Replace with actual implementation
