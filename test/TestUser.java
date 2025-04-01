@@ -21,7 +21,7 @@ public class TestUser {
 	public void run(String outputPath) {
 		char delimiter = ';';
 		String inputPath = "test" + File.separatorChar + "testInputFile.test";
-		
+
 		// TODO 4: Call the appropriate method(s) on the coordinator to get it to 
 		// run the compute job specified by inputPath, outputPath, and delimiter
 		// Wrap paths in InputConfig and OutputConfig objects
@@ -34,8 +34,6 @@ public class TestUser {
 		// Run computation
 		ComputeResult result = coordinator.compute(request);
 
-		// Print result
-		System.out.println("Computation Result: " + result);
 	}
 
 }
