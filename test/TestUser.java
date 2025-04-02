@@ -12,9 +12,9 @@ public class TestUser {
 	
 	// TODO 3: change the type of this variable to the name you're using for your
 	// @NetworkAPI interface; also update the parameter passed to the constructor
-	private final ComputationCoordinator coordinator;
+	private final ComputationCoordinatorAPI coordinator;
 
-	public TestUser(ComputationCoordinator coordinator) {
+	public TestUser(ComputationCoordinatorAPI coordinator) {
 		this.coordinator = coordinator;
 	}
 
@@ -32,7 +32,7 @@ public class TestUser {
 		ComputeRequest request = new ComputeRequest(inputConfig, outputConfig, delimiter);
 
 		// Run computation
-		ComputeResult result = coordinator.compute(request);
+		ComputeResult result = (ComputeResult) coordinator.compute(request);
 
 	}
 
