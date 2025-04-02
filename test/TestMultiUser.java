@@ -21,7 +21,7 @@ public class TestMultiUser {
 	
 	// TODO 1: change the type of this variable to the name you're using for your @NetworkAPI
 	// interface
-	private ComputationCoordinator coordinator;
+	private ComputationCoordinatorAPI coordinator;
 	private ComputeEngine computeEngine;
 	private FileDataStore dataStore;
 	
@@ -31,7 +31,7 @@ public class TestMultiUser {
 		// that the user will make requests to
 		computeEngine = new ComputeEngine();
 		dataStore = new FileDataStore();
-		ComputationCoordinator instance = new ComputationCoordinator(computeEngine, dataStore);
+		ComputationCoordinatorAPI instance = new ComputationCoordinator(computeEngine, dataStore);
         // Store it in the 'coordinator' instance variable
 		coordinator = instance;
 	}
