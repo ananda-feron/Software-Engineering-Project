@@ -51,17 +51,6 @@ public class MultithreadedComputationCoordinator extends AbstractComputationCoor
             return new ComputeResult(ComputeResult.ComputeResultStatus.FAILURE, "Unexpected runtime error: " + e.getMessage());
         }
     }
-
-    public void shutdown() {
-        executor.shutdown();
-        try {
-            if (!executor.awaitTermination(60, TimeUnit.SECONDS)) {
-                executor.shutdownNow();
-            }
-        } catch (InterruptedException e) {
-            executor.shutdownNow();
-        }
-    }
 }
 
 
