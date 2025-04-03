@@ -6,12 +6,10 @@ import java.util.*;
 import java.util.concurrent.*;
 
 public class MultithreadedComputationCoordinator extends AbstractComputationCoordinator {
-    private final ExecutorService executor;
-    private final int threadNumber = 10;
+    private final ExecutorService executor = Executors.newFixedThreadPool(10);;
 
     public MultithreadedComputationCoordinator(ComputeEngineAPI computeEngine, DataStoreAPI dataStore) {
         super(computeEngine, dataStore);
-        this.executor = Executors.newFixedThreadPool(threadNumber);
     }
 
     @Override
@@ -28,12 +26,22 @@ public class MultithreadedComputationCoordinator extends AbstractComputationCoor
 
             List<Integer> numbers = new ArrayList<>();
             readResult.getResults().forEach(numbers::add);
+
+            // Create a CountDownLatch to wait for all threads to finish
+            CountDownLatch latch = new CountDownLatch(numbers.size());
             List<Future<String>> futureResults = new ArrayList<>();
 
             // Submit computation tasks to the thread pool
             for (int value : numbers) {
-                futureResults.add(executor.submit(() -> computeEngine.compute(value)));
+                futureResults.add(executor.submit(() -> {
+                    String result = computeEngine.compute(value);
+                    latch.countDown(); // Decrease the latch count once the task is done
+                    return result;
+                }));
             }
+
+            // Wait for all tasks to complete
+            latch.await();
 
             // Collect results after all threads finish
             for (Future<String> future : futureResults) {
@@ -52,6 +60,7 @@ public class MultithreadedComputationCoordinator extends AbstractComputationCoor
         }
     }
 }
+
 
 
 
