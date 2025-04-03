@@ -7,11 +7,11 @@ import java.util.concurrent.*;
 
 public class MultithreadedComputationCoordinator extends AbstractComputationCoordinator {
     private final ExecutorService executor;
-    private final int THREADNUMBER = 10;
+    private final int threadNumber = 10;
 
     public MultithreadedComputationCoordinator(ComputeEngineAPI computeEngine, DataStoreAPI dataStore) {
         super(computeEngine, dataStore);
-        this.executor = Executors.newFixedThreadPool(THREADNUMBER);
+        this.executor = Executors.newFixedThreadPool(threadNumber);
     }
 
     @Override
