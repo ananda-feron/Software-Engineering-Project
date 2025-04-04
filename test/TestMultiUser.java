@@ -11,6 +11,8 @@ import apis.*;
 import implementations.ComputationCoordinator;
 import implementations.ComputeEngine;
 import implementations.FileDataStore;
+import implementations.MultithreadedComputationCoordinator;
+import implementations.MultithreadedComputationCoordinator;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,7 +33,7 @@ public class TestMultiUser {
 		// that the user will make requests to
 		computeEngine = new ComputeEngine();
 		dataStore = new FileDataStore();
-		ComputationCoordinatorAPI instance = new ComputationCoordinator(computeEngine, dataStore);
+		ComputationCoordinatorAPI instance = new MultithreadedComputationCoordinator(computeEngine, dataStore);
         // Store it in the 'coordinator' instance variable
 		coordinator = instance;
 	}
