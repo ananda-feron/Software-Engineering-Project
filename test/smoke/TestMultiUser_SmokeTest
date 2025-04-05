@@ -1,0 +1,48 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+public class TestMultiUser {
+
+    private static final int MaxThreads = 10000000; // I want to check a bigger number to assure it can handle it
+
+   //Calculator
+    public static List<Integer> calCollatz(int n) {
+        List<Integer> sequence = new ArrayList<>();
+        while (n != 1 && list.size() < 1000000000) { //Prevent loop, stops at 1000000000 int
+            list.add(n);
+            // If give number (n) % by 2 is equals to 0, enter loop
+            if (n % 2 == 0) {
+                n /= 2;
+            } else {
+                n = 3 * n + 1;
+            }
+        }
+        lsit.add(1);
+        return list;
+    }
+
+    //method to test with main 
+    public static void main(String[] args) throws InterruptedException {
+        int UserAmount = 17; //Users at once
+        ExecutorService executorService = Executors.newFixedThreadPool(MaxThreads);
+
+        for (int i = 1; i <= UsersNum; i++) {
+            int userId = i;
+            int inputNum = 10 * i; // Various with User input
+
+            executorService.submit() {
+                System.out.println("User " + userId + " started with input: " + inputNum);
+                List<Integer> result = calCollatz(inputNumber); // Call back to engine
+                System.out.println("User " + userId + " finished with sequence: " + result);
+                // Here you would add assertions to verify the correctness of the result
+            });
+        }
+
+        executorService.shutdown();
+        executorService.awaitTermination(1, TimeUnit.mins); // amount of time it takes to complete
+        System.out.println("All users inputs have been proceesed");
+    }
+}
