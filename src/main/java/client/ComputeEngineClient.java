@@ -7,10 +7,10 @@ import io.grpc.Grpc;
 import io.grpc.InsecureChannelCredentials;
 import io.grpc.ManagedChannel;
 import io.grpc.StatusRuntimeException;
-import yourpackage.ComputationCoordinatorAPIGrpc;
-import yourpackage.NetworkAPI.ComputeRequest;
-import yourpackage.NetworkAPI.ComputeResult;
-import yourpackage.NetworkAPI.ComputeResultStatus;
+import protobuf.ComputationCoordinatorAPIGrpc;
+import protobuf.NetworkAPI.ComputeRequest;
+import protobuf.NetworkAPI.ComputeResult;
+import protobuf.NetworkAPI.ComputeResultStatus;
 
 public class ComputeEngineClient { // Change to your class name
     private final ComputationCoordinatorAPIGrpc.ComputationCoordinatorAPIBlockingStub blockingStub; // Update to your service's blocking stub
