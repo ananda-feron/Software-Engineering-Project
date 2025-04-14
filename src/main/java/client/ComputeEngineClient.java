@@ -7,30 +7,45 @@ import io.grpc.Grpc;
 import io.grpc.InsecureChannelCredentials;
 import io.grpc.ManagedChannel;
 import io.grpc.StatusRuntimeException;
-import protobuf.ComputationCoordinatorAPIGrpc;
+
+// Updated imports to match the proto package structure
 import protobuf.NetworkAPI.ComputeRequest;
 import protobuf.NetworkAPI.ComputeResult;
 import protobuf.NetworkAPI.ComputeResultStatus;
+import protobuf.NetworkAPI.InputConfig;
+import protobuf.NetworkAPI.OutputConfig;
+import protobuf.ComputationCoordinatorAPIGrpc;
 
-public class ComputeEngineClient { // Change to your class name
-    private final ComputationCoordinatorAPIGrpc.ComputationCoordinatorAPIBlockingStub blockingStub; // Update to your service's blocking stub
+public class ComputeEngineClient {
+    private final ComputationCoordinatorAPIGrpc.ComputationCoordinatorAPIBlockingStub blockingStub;
 
     public ComputeEngineClient(Channel channel) {
-        blockingStub = ComputationCoordinatorAPIGrpc.newBlockingStub(channel);  // Update to your service's stub
+        blockingStub = ComputationCoordinatorAPIGrpc.newBlockingStub(channel);
     }
 
     // Client call logic
     public void compute() {
+        // Create InputConfig and OutputConfig instances
+        InputConfig inputConfig = InputConfig.newBuilder()
+                .setFilePath("path/to/file")
+                .build();
+
+        OutputConfig outputConfig = OutputConfig.newBuilder()
+                .setFilePath("path/to/output")
+                .build();
+
+        // Use the created configs in the ComputeRequest
         ComputeRequest request = ComputeRequest.newBuilder()
-                .setInputConfig(ComputeRequest.InputConfig.newBuilder().setFilePath("path/to/file"))
-                .setOutputConfig(ComputeRequest.OutputConfig.newBuilder().setFilePath("path/to/output"))
-                .setDelimiter(",") // Optional delimiter
+                .setInputConfig(inputConfig)
+                .setOutputConfig(outputConfig)
+                .setDelimiter(",")
                 .build();
 
         ComputeResult response;
         try {
             response = blockingStub.compute(request);
         } catch (StatusRuntimeException e) {
+            System.err.println("RPC failed: " + e.getStatus());
             e.printStackTrace();
             return;
         }
@@ -49,7 +64,7 @@ public class ComputeEngineClient { // Change to your class name
         ManagedChannel channel = Grpc.newChannelBuilder(target, InsecureChannelCredentials.create())
                 .build();
         try {
-            ComputeEngineClient client = new ComputeEngineClient(channel); // Use the updated client class name
+            ComputeEngineClient client = new ComputeEngineClient(channel);
             client.compute();
         } finally {
             channel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
