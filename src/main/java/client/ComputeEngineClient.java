@@ -61,8 +61,7 @@ public class ComputeEngineClient {
             inputConfig = NetworkAPI.InputConfig.newBuilder()
                     .setFilePath(filepath)
                     .build();
-        }
-        else { //if input type is a typed list, make it into a temp file.
+        } else { //if input type is a typed list, make it into a temp file.
             File listTempFile = new File("src/main/resources/list-input.tmp");
             try (FileWriter fileWriter = new FileWriter(listTempFile.getAbsolutePath())) {
                 for (Integer i : numbers) {
