@@ -1,0 +1,31 @@
+package protobuf;
+
+enum ComputeResultStatus {
+  UNKNOWN = 0;
+  SUCCESS = 1;
+  COMPUTATION_FAILURE = 2;
+  WRITE_FAILURE = 3;
+}
+
+message InputConfig {
+  optional string filePath = 1;
+}
+
+message OutputConfig {
+  optional string filePath = 1;
+}
+
+message ComputeRequest {
+  optional InputConfig inputConfig = 1;
+  optional OutputConfig outputConfig = 2;
+  optional string delimiter = 3;
+}
+
+message ComputeResult {
+  optional ComputeResultStatus status = 1;
+  optional string failureMessage = 2;
+}
+
+service ComputationCoordinatorAPI {
+  rpc compute (ComputeRequest) returns (ComputeResult);
+}
