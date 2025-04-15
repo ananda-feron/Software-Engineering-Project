@@ -12,7 +12,7 @@ message InputConfig {
 }
 
 message OutputConfig {
-  optional string filePath = 2;
+  optional string filePath = 1;
 }
 
 message ComputeRequest {
