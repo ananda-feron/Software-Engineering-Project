@@ -1,0 +1,17 @@
+package protobuf;
+
+message InputConfig {
+  optional string filePath = 1;
+}
+
+message DataStoreReadResult {
+  optional InputConfig input = 1;
+}
+
+message WriteResult {
+
+}
+
+service DataStoreAPI {
+  
+}
