@@ -22,7 +22,7 @@ message ComputeRequest {
 }
 
 message ComputeResult {
-  optional ComputeResultStatus status = 1;
+  optional ComputeResultStatus resultStatus = 1;
   optional string failureMessage = 2;
 }
 
