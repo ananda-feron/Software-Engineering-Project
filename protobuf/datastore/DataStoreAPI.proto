@@ -1,6 +1,5 @@
-package protobuf;
-
-import "NetworkAPI.proto";
+package protobuf.network;
+import "network/NetworkAPI.proto";
 
 message DataStoreReadResult {
   repeated int32 results = 1;

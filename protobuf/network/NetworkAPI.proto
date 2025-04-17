@@ -1,4 +1,4 @@
-package protobuf;
+package protobuf.network;
 
 enum ComputeResultStatus {
   UNKNOWN = 0;
