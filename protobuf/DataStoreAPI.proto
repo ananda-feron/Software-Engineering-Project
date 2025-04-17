@@ -1,0 +1,36 @@
+package protobuf;
+import "NetworkAPI.proto";
+
+message DataStoreReadResult {
+  repeated int32 results = 1;
+  optional Status status = 2;
+  optional string failureMessage = 3;
+
+  enum Status {
+    UNKNOWN = 0;
+    SUCCESS = 1;
+    FAILURE = 2;
+  }
+}
+
+message AppendRequest {
+  optional OutputConfig output = 1;
+  optional string resultToAppend = 2;
+  optional string delimiter = 3;
+}
+
+message WriteResult {
+  optional string failureMessage = 1;
+  optional WriteResultStatus writeResultStatus = 2;
+
+  enum WriteResultStatus {
+    UNKNOWN = 0;
+    SUCCESS = 1;
+    FAILURE = 2;
+  }
+}
+
+service DataStoreAPI {
+  rpc read (InputConfig) returns (DataStoreReadResult);
+  rpc appendSingleResult (AppendRequest) returns (WriteResult);
+}
