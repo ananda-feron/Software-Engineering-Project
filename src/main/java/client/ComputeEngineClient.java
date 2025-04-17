@@ -17,6 +17,7 @@ import java.util.Scanner;
 public class ComputeEngineClient {
 
     public static void main(String[] args) throws IOException {
+        //TODO: add exception handling here.
 
         Scanner scanner = new Scanner(System.in);
         String filepath = null;

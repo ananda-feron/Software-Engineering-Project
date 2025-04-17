@@ -7,16 +7,18 @@ import implementations.ComputeEngine;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import remoteimps.RemoteComputationCoordinator;
+import remoteimps.RemoteDataStore;
 
 import java.io.IOException;
+import java.rmi.Remote;
 
-public class CollatzServer {
+public class CoordinatorServer {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
         ComputeEngineAPI computeEngine = new ComputeEngine();
 
-        DataStoreAPI dataStore = new FileDataStore();
+        RemoteDataStore dataStore = new RemoteDataStore();
 
         Server server = ServerBuilder.forPort(9090)
                 .addService(new RemoteComputationCoordinator(computeEngine, dataStore))

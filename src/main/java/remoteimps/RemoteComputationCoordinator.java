@@ -4,8 +4,13 @@ import apis.DataStoreReadResult;
 import implementations.ComputeResult;
 import implementations.FileInput;
 import implementations.FileOutput;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
+import protobuf.ComputationCoordinatorAPIGrpc;
 import protobuf.ComputationCoordinatorAPIGrpc.ComputationCoordinatorAPIImplBase;
+import protobuf.DataStoreAPIGrpc;
+import protobuf.DataStoreAPIOuterClass;
 import protobuf.NetworkAPI;
 
 import apis.*;
@@ -17,9 +22,9 @@ import java.util.concurrent.*;
 public class RemoteComputationCoordinator extends ComputationCoordinatorAPIImplBase {
     private final ExecutorService executor = Executors.newFixedThreadPool(10);;
     protected final ComputeEngineAPI computeEngine;
-    protected final DataStoreAPI dataStore;
+    protected final RemoteDataStore dataStore;
 
-    public RemoteComputationCoordinator(ComputeEngineAPI computeEngine, DataStoreAPI dataStore) {
+    public RemoteComputationCoordinator(ComputeEngineAPI computeEngine, RemoteDataStore dataStore) {
         this.computeEngine = computeEngine;
         this.dataStore = dataStore;
     }
@@ -27,10 +32,16 @@ public class RemoteComputationCoordinator extends ComputationCoordinatorAPIImplB
     @Override
     public void compute(NetworkAPI.ComputeRequest request, StreamObserver<NetworkAPI.ComputeResult> responseObserver) {
 
+        //open connection to DataStoreServer
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080)
+                .usePlaintext()
+                .build();
+        DataStoreAPIGrpc.DataStoreAPIBlockingStub blockingStub = DataStoreAPIGrpc.newBlockingStub(channel);
+
         if (request == null) {
 //            return new ComputeResult(ComputeResult.ComputeResultStatus.FAILURE, "Error: request is invalid");
             responseObserver.onNext(NetworkAPI.ComputeResult.newBuilder()
-                            .setStatus(NetworkAPI.ComputeResultStatus.UNKNOWN) //TODO: fix these unknowns (add more enums)
+                    .setStatus(NetworkAPI.ComputeResultStatus.UNKNOWN) //TODO: fix these unknowns (add more enums)
                     .setFailureMessage("Error: request is invalid")
                     .build());
             responseObserver.onCompleted();
@@ -38,11 +49,13 @@ public class RemoteComputationCoordinator extends ComputationCoordinatorAPIImplB
 
         InputConfig inputConfig = new FileInput(request.getInputConfig().getFilePath());
         OutputConfig outputConfig = new FileOutput(request.getOutputConfig().getFilePath());
-        char delimiter = request.getDelimiter().charAt(0);
+        String delimiter = request.getDelimiter();
+
+        DataStoreAPIOuterClass.DataStoreReadResult readResult = blockingStub.read(request.getInputConfig());
 
         try {
-            DataStoreReadResult readResult = dataStore.read(inputConfig);
-            if (readResult.getStatus() != DataStoreReadResult.Status.SUCCESS) {
+
+            if (readResult.getStatus() != DataStoreAPIOuterClass.DataStoreReadResult.Status.SUCCESS) {
 //                return new ComputeResult(ComputeResult.ComputeResultStatus.FAILURE, readResult.getFailureMessage());
                 responseObserver.onNext(NetworkAPI.ComputeResult.newBuilder()
                         .setStatus(NetworkAPI.ComputeResultStatus.UNKNOWN) //TODO: fix these unknowns (add more enums)
@@ -51,8 +64,8 @@ public class RemoteComputationCoordinator extends ComputationCoordinatorAPIImplB
                 responseObserver.onCompleted();
             }
 
-            List<Integer> numbers = new ArrayList<>();
-            readResult.getResults().forEach(numbers::add);
+            List<Integer> numbers = readResult.getResultsList();
+//            readResult.getResults().forEach(numbers::add);
             System.out.println(numbers);
 
             // Create a CountDownLatch to wait for all threads to finish
@@ -75,7 +88,13 @@ public class RemoteComputationCoordinator extends ComputationCoordinatorAPIImplB
             for (Future<String> future : futureResults) {
                 try {
                     String computedValue = future.get(); // Blocks until computation is done
-                    dataStore.appendSingleResult(outputConfig, computedValue, delimiter);
+                    DataStoreAPIOuterClass.AppendRequest appendRequest = DataStoreAPIOuterClass.AppendRequest.newBuilder()
+                            .setResultToAppend(computedValue)
+                            .setOutput(request.getOutputConfig())
+                            .setDelimiter(delimiter)
+                            .build();
+                    DataStoreAPIOuterClass.WriteResult writeResult = blockingStub.appendSingleResult(appendRequest); //nothing is ever done with writeResult.
+
                 } catch (InterruptedException | ExecutionException e) {
 //                    return new implementations.ComputeResult(implementations.ComputeResult.ComputeResultStatus.FAILURE, "Computation error: " + e.getMessage());
                     responseObserver.onNext(NetworkAPI.ComputeResult.newBuilder()
