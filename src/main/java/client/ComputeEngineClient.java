@@ -47,8 +47,8 @@ public class ComputeEngineClient {
             break;
         }
 
-        //connection to server
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
+        //connection to server (currently connected to slow server, port 2020.)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 2020)
                 .usePlaintext()
                 .build();
 

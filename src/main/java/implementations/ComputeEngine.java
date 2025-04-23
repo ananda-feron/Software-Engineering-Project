@@ -10,9 +10,8 @@ public class ComputeEngine implements ComputeEngineAPI {
 
         try {
             if (value <= 0) {
-                return "Number cannot be negative";
+                return "Number must be a positive integer.";
             }
-
 
             StringBuilder builder = new StringBuilder();
 

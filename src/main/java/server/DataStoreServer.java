@@ -2,8 +2,7 @@ package server;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import remoteimps.RemoteComputationCoordinator;
-import remoteimps.RemoteDataStore;
+import remoteimps.old.RemoteDataStore;
 
 import java.io.IOException;
 
@@ -11,12 +10,13 @@ public class DataStoreServer {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        Server server = ServerBuilder.forPort(8080)
+        Server slowServer = ServerBuilder.forPort(4040)
                 .addService(new RemoteDataStore())
                 .build();
 
-        System.out.println("starting server on port 8080...");
-        server.start();
-        server.awaitTermination();
+        System.out.println("starting slow datastore server on port 4040...");
+        slowServer.start();
+        slowServer.awaitTermination();
+        System.out.println("slow datastore server stopped");
     }
 }
