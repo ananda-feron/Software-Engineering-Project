@@ -29,7 +29,7 @@ public class TestComputeEngineAPI {
         ComputeEngineAPI computeEngineAPI = new ComputeEngine();
 
         // Assert that calling compute() with a negative number throws an exception
-        Assertions.assertEquals("Number cannot be negative", computeEngineAPI.compute(-9));
+        Assertions.assertEquals("Number must be a positive integer.", computeEngineAPI.compute(-9));
     }
 
 }

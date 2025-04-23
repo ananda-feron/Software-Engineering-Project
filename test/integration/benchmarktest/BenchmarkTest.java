@@ -2,13 +2,15 @@ package integration.benchmarktest;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import protobuf.ComputationCoordinatorAPIGrpc;
 import protobuf.NetworkAPI;
 
 public class BenchmarkTest {
 
-
+    //comment @Disabled to run the test.
+    @Disabled("not intended to be run in CI.")
     @Test
     public void benchmark() throws InterruptedException {
 
