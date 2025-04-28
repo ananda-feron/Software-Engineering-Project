@@ -20,7 +20,8 @@ public class ComputeEngineClient {
         //TODO: add exception handling here.
 
         Scanner scanner = new Scanner(System.in);
-        String filepath = null;
+        String inputFilePath = null;
+        String outputFilePath = null;
         List<Integer> numbers = new ArrayList<>();
 
         while (true) {
@@ -28,17 +29,22 @@ public class ComputeEngineClient {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    System.out.println("enter file path:");
-                    filepath = scanner.next();
+                    System.out.println("enter input file path:");
+                    inputFilePath = scanner.next();
+                    System.out.println("enter output file path:");
+                    outputFilePath = scanner.next();
                     break;
                 case 2:
+                    System.out.println("enter output file path:");
+                    outputFilePath = scanner.next();
+
                     System.out.println("enter positive integers, type -1 to exit:");
                     while (true) {
                         int num = scanner.nextInt();
                         if (num == -1) {
                             break;
                         } else if (num < 0) {
-                            System.out.println("enter positive integers, type -1 to exit:");
+                            System.err.println("enter positive integers, type -1 to exit:");
                             continue;
                         }
                         numbers.add(num);
@@ -61,9 +67,9 @@ public class ComputeEngineClient {
         NetworkAPI.InputConfig inputConfig;
 
         //if input type is a file
-        if (filepath != null) {
+        if (inputFilePath != null) {
             inputConfig = NetworkAPI.InputConfig.newBuilder()
-                    .setFilePath(filepath)
+                    .setFilePath(inputFilePath)
                     .build();
         } else { //if input type is a typed list, make it into a temp file.
             File listTempFile = new File("src/main/resources/list-input.tmp");
@@ -82,7 +88,7 @@ public class ComputeEngineClient {
 
         //output config
         NetworkAPI.OutputConfig outputConfig = NetworkAPI.OutputConfig.newBuilder()
-                .setFilePath("src/main/resources/output.txt")
+                .setFilePath(outputFilePath)
                 .build();
 
         NetworkAPI.ComputeRequest computeRequest = NetworkAPI.ComputeRequest.newBuilder()
