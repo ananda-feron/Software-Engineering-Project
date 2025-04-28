@@ -32,11 +32,14 @@ public class ComputeEngineClient {
                     filepath = scanner.next();
                     break;
                 case 2:
-                    System.out.println("enter numbers, type -1 to exit:");
+                    System.out.println("enter positive integers, type -1 to exit:");
                     while (true) {
                         int num = scanner.nextInt();
                         if (num == -1) {
                             break;
+                        } else if (num < 0) {
+                            System.out.println("enter positive integers, type -1 to exit:");
+                            continue;
                         }
                         numbers.add(num);
                     }

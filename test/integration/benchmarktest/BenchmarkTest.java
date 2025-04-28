@@ -10,7 +10,7 @@ import protobuf.NetworkAPI;
 public class BenchmarkTest {
 
     //comment @Disabled to run the test.
-    @Disabled("not intended to be run in CI.")
+//    @Disabled("not intended to be run in CI.")
     @Test
     public void benchmark() throws InterruptedException {
 
