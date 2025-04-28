@@ -37,6 +37,7 @@ public class ComputeEngineClient {
                 case 2:
                     System.out.println("enter output file path:");
                     outputFilePath = scanner.next();
+
                     System.out.println("enter positive integers, type -1 to exit:");
                     while (true) {
                         int num = scanner.nextInt();
