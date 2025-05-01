@@ -21,7 +21,7 @@ jobs:
 
       - name: Run Checkstyle and reviewdog
         run: |
-          ./gradlew checkstyleMain || true
+          ./gradlew checkstyle || true
           find . -name 'checkstyle-result.xml' -exec cat {} + \
             | reviewdog -f=checkstyle -reporter=github-pr-review -level=error
         env:
