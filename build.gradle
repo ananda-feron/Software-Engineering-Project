@@ -1,5 +1,6 @@
 plugins {
     id 'com.google.protobuf' version '0.9.4'
+    id 'checkstyle'
 }
 
 apply plugin: 'java'
@@ -68,4 +69,10 @@ protobuf {
     generateProtoTasks {
         all()*.plugins { grpc {} }
     }
+}
+
+checkstyle {
+    toolVersion = '10.12.2' // or whatever version you want
+    config = resources.text.fromFile('config/checkstyle/checkstyle.xml')
+    showViolations = true
 }
