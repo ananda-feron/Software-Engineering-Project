@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <ul>
+    <li><input type="radio" v-model="pick" :value="first" /></li>
+    <li><input type="radio" v-model="pick" :value="second" /></li>
+    </ul>
   </main>
 </template>
