@@ -13,16 +13,24 @@ const toggleSelection = (value: string) => {
   <main>
     <h1 class="Welcoming">Welcome to the Collatz Sequence Generator!</h1>
     <h2 class="Instruction">Please pick one of the two options below</h2>
-    <ul class = "options">
+    <ul class="options">
       <li>
-        <input type="radio" :checked="pick === 'File'" @click="toggleSelection('File')">
-        File
-        </input>
-        <button class="button is-primary" v-if="pick === 'File'">Choose file</button>
+        <div class="option-container">
+          <label class="radio-label">
+            <input type="radio" :checked="pick === 'File'" @click="toggleSelection('File')" />
+            File
+          </label>
+          <button class="button is-primary" v-if="pick === 'File'">Choose file</button>
+        </div>
       </li>
       <li>
-        <input type="radio" :checked="pick === 'List'" @click="toggleSelection('List')">  List </input>
-        <button class="button is-primary" v-if="pick === 'List'">Enter a List</button>
+        <div class="option-container">
+          <label class="radio-label">
+            <input type="radio" :checked="pick === 'List'" @click="toggleSelection('List')" />
+            List
+          </label>
+          <button class="button is-primary" v-if="pick === 'List'">Enter a List</button>
+        </div>
       </li>
     </ul>
   </main>
@@ -45,5 +53,18 @@ const toggleSelection = (value: string) => {
   list-style-type: none;
   padding: 0;
   text-align: center;
+}
+
+.option-container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  margin-bottom: 1rem; /* Add spacing between options */
+}
+
+.radio-label {
+  display: flex;
+  align-items: center; /* Align the radio button and text vertically */
+  gap: 0.5rem; /* Add spacing between the radio button and text */
 }
 </style>
