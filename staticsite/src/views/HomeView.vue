@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+const fileInput = ref<File | null>(null) // To hold the file input
+
 const pick = ref<string | null>("") // Allow null to represent no selection
 
 // Function to handle radio button selection/deselection
@@ -20,7 +22,8 @@ const toggleSelection = (value: string) => {
             <input type="radio" :checked="pick === 'File'" @click="toggleSelection('File')" />
             File
           </label>
-          <button class="button is-primary" v-if="pick === 'File'">Choose file</button>
+          <button class="button is-primary" v-if="pick === 'File'" onclick="document.getElementById('myFileInput').click()">Upload File</button>
+          <input type="file" id="myFileInput" style="display: none;">
         </div>
       </li>
       <li>
