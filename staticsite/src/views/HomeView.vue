@@ -9,6 +9,13 @@ const pick = ref<string | null>("") // Allow null to represent no selection
 const toggleSelection = (value: string) => {
   pick.value = pick.value === value ? null : value; // Deselect if already selected
 }
+
+const setFile = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  if (target.files && target.files.length > 0) {
+    fileInput.value = target.files[0]; // Set the file input to the selected file
+  }
+}
 </script>
 
 <template>
@@ -23,7 +30,8 @@ const toggleSelection = (value: string) => {
             File
           </label>
           <button class="button is-primary" v-if="pick === 'File'" onclick="document.getElementById('myFileInput').click()">Upload File</button>
-          <input type="file" id="myFileInput" style="display: none;">
+          <input type="file" id="myFileInput" @change="setFile" style="display: none;">
+          <a v-if="pick === 'File'"> {{ fileInput?.name || 'No file selected' }} </a>
         </div>
       </li>
       <li>
