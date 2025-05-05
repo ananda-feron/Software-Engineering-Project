@@ -32,6 +32,7 @@ const setFile = (event: Event) => {
           <button class="button is-primary" v-if="pick === 'File'" onclick="document.getElementById('myFileInput').click()">Upload File</button>
           <input type="file" id="myFileInput" @change="setFile" style="display: none;">
           <a v-if="pick === 'File'"> {{ fileInput?.name || 'No file selected' }} </a>
+          <button class="button" v-if="fileInput !== null">Submit</button>
         </div>
       </li>
       <li>
