@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const pick = ref("File")
+const pick = ref("")
 </script>
 
 <template>
