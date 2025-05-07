@@ -38,7 +38,7 @@ jobs:
 
       # Run Reviewdog on Checkstyle results and add PR comments
       - name: Run Reviewdog on Checkstyle results
-        uses: reviewdog/action@v1
+        uses: reviewdog/action@v2
         with:
           name: checkstyle
           reporter: github-pr-review
