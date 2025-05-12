@@ -45,6 +45,7 @@ def protobufVersion = '3.25.1'
 def protocVersion = protobufVersion
 
 dependencies {
+	implementation 'org.jfree:jfreechart:1.5.3' // Add to add visualization to our output (Library for chart)
     implementation "io.grpc:grpc-protobuf:${grpcVersion}"
     implementation "io.grpc:grpc-services:${grpcVersion}"
     implementation "io.grpc:grpc-stub:${grpcVersion}"
