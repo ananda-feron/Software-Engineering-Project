@@ -38,16 +38,16 @@ public class CollatzSequenceOutputVizualization implements ComputeEngineAPI {
                 }
             }
 
-            // Visualize the sequence
-            CollatzChart.visualize(sequence);
+          // Updated: Visualize sequence for input and output
+            CollatzChart.visualizeUserOutput(sequence, sequence.get(0));
 
+            // Return the sequence as a comma-separated string
             return builder.toString();
 
-        } catch (Exception e){
+        } catch (Exception e) {
             return "Unexpected runtime error: " + e.getMessage();
         }
     }
-
     // New method to get the sequence as a List<Integer>
     public List<Integer> computeSequence(int value) {
         List<Integer> sequence = new ArrayList<>();
