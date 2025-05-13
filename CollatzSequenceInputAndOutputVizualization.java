@@ -4,7 +4,7 @@ import apis.ComputeEngineAPI;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CollatzSequenceOutputVizualization implements ComputeEngineAPI {
+public class CollatzSequenceInputAndOutputVizualization implements ComputeEngineAPI {
 
     @Override
 
